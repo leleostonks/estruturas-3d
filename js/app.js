@@ -467,7 +467,7 @@ function meshTriangles(md) {
   return tris;
 }
 function toOBJ(md, mem, pm, prm) {
-  let out = `# ${md.name} — Acervo de Estruturas\n# unidades: metros, Y para cima\n`, vi = 1;
+  let out = `# ${md.name} — Tess Architecture\n# unidades: metros, Y para cima\n`, vi = 1;
   if (md.user) {
     for (const pos of meshTriangles(md)) {
       pos.forEach(p => out += `v ${n3(p.x)} ${n3(p.y)} ${n3(p.z)}\n`);
@@ -542,7 +542,7 @@ function toDAE(md, mem, pm, prm, title) {
   }
   return `<?xml version="1.0" encoding="utf-8"?>
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
-<asset><contributor><authoring_tool>Acervo de Estruturas</authoring_tool><comments>${xesc(title || md.name)} ${xesc(Object.entries(prm).map(([k, v]) => k + '=' + v).join(' '))}</comments></contributor><created>${now}</created><modified>${now}</modified><unit name="meter" meter="1"/><up_axis>Z_UP</up_axis></asset>
+<asset><contributor><authoring_tool>Tess Architecture</authoring_tool><comments>${xesc(title || md.name)} ${xesc(Object.entries(prm).map(([k, v]) => k + '=' + v).join(' '))}</comments></contributor><created>${now}</created><modified>${now}</modified><unit name="meter" meter="1"/><up_axis>Z_UP</up_axis></asset>
 <library_effects>${mats.map(x => `<effect id="${x.id}-fx"><profile_COMMON><technique sid="common"><lambert><diffuse><color>${x.rgb} 1</color></diffuse></lambert></technique></profile_COMMON></effect>`).join('')}</library_effects>
 <library_materials>${mats.map(x => `<material id="${x.id}" name="${xesc(x.name)}"><instance_effect url="#${x.id}-fx"/></material>`).join('')}</library_materials>
 <library_geometries>
