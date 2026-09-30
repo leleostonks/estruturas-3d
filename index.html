@@ -2,205 +2,286 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="versao" content="build-20260930-100532">
+<meta name="versao" content="build-20260930-2">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
-<title>Acervo de Estruturas</title>
-<meta http-equiv="content-language" content="pt-BR">
 <meta name="google" content="notranslate">
-<script>document.documentElement.lang = 'pt-BR';</script>
+<title>Acervo de Estruturas</title>
+<meta name="description" content="Catálogo de estruturas metálicas 3D para baixar no SketchUp: treliças, coberturas, galpões, torres e pontes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-/* Layout: biblioteca em grade com filtro lateral; ficha do modelo com palco 3D + painel técnico */
+/* Layout: cabeçalho com busca; painel claro com abas; grade de cards empilhados com desenho em traço, variante, favorito e download */
 :root{
-  --bg:#eceff1; --surface:#f8f9fa; --sunk:#e2e6e9; --stage:#dde2e6;
-  --ink:#1a2127; --muted:#586570; --line:#c9d0d6; --grid:#b7c0c7;
-  --accent:#e2a200; --accent-ink:#1a2127; --node:#1a2127;
+  --bg-a:#fbe9e6; --bg-b:#edf3f6; --panel:rgb(247 250 251 / .92); --panel-line:#ffffff;
+  --surface:#ffffff; --sunk:#eef2f4; --stage:#ffffff; --face:#ffffff; --edge:#1d2327; --grid:#e3e8eb;
+  --ink:#1d2327; --muted:#69757f; --line:#dfe5e9; --shadow:rgb(29 35 39 / .10);
+  --accent:#2f9e57; --accent-ink:#ffffff; --brand:#c63b2f;
   --m1:#2d5c89; --m2:#c98500; --m3:#62717e; --m4:#34876a; --m5:#a44848; --m6:#6f57a3;
   --display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
-  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#13171b; --surface:#1b2126; --sunk:#232a30; --stage:#0f1316;
-  --ink:#e5e9ec; --muted:#93a0aa; --line:#2d363d; --grid:#2c353c;
-  --accent:#f2b632; --accent-ink:#13171b; --node:#e5e9ec;
+  --bg-a:#1d1716; --bg-b:#11161a; --panel:rgb(23 28 32 / .94); --panel-line:#262e34;
+  --surface:#1c2227; --sunk:#232a30; --stage:#20272c; --face:#dfe4e8; --edge:#0e1215; --grid:#2c353b;
+  --ink:#e6eaed; --muted:#98a4ae; --line:#2c353b; --shadow:rgb(0 0 0 / .35);
+  --accent:#4cc27a; --accent-ink:#0d1a12; --brand:#e5594b;
   --m1:#6ea2d6; --m2:#f2b632; --m3:#a7b3bc; --m4:#5dbd92; --m5:#e07b7b; --m6:#a88bdb;
   color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#13171b; --surface:#1b2126; --sunk:#232a30; --stage:#0f1316;
-  --ink:#e5e9ec; --muted:#93a0aa; --line:#2d363d; --grid:#2c353c;
-  --accent:#f2b632; --accent-ink:#13171b; --node:#e5e9ec;
+  --bg-a:#1d1716; --bg-b:#11161a; --panel:rgb(23 28 32 / .94); --panel-line:#262e34;
+  --surface:#1c2227; --sunk:#232a30; --stage:#20272c; --face:#dfe4e8; --edge:#0e1215; --grid:#2c353b;
+  --ink:#e6eaed; --muted:#98a4ae; --line:#2c353b; --shadow:rgb(0 0 0 / .35);
+  --accent:#4cc27a; --accent-ink:#0d1a12; --brand:#e5594b;
   --m1:#6ea2d6; --m2:#f2b632; --m3:#a7b3bc; --m4:#5dbd92; --m5:#e07b7b; --m6:#a88bdb;
   color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);padding:0 16px 48px}
+[hidden]{display:none!important}
+html{min-height:100%;background:var(--bg-b)}
+body{margin:0;min-height:100%;color:var(--ink);font:15px/1.5 var(--body);background:radial-gradient(1200px 520px at 0% 0%,var(--bg-a),transparent 70%),var(--bg-b);background-attachment:fixed;padding:0 16px 48px}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+img{max-width:100%}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.wrap{max-width:1320px;margin:0 auto}
 
-header.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding-block:18px;border-bottom:1px solid var(--line);margin-bottom:22px}
-.brand{display:flex;align-items:center;gap:10px;margin-right:auto;cursor:pointer;background:none;border:0;padding:0;text-align:left}
-.brand svg{flex:none}
-.brand b{font:700 22px/1 var(--display);letter-spacing:.01em;display:block}
-.brand small{font:12px/1.3 var(--mono);color:var(--muted);letter-spacing:.04em}
-.search{flex:1 1 260px;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:0 12px}
-.search input{border:0;background:none;padding:9px 0;width:100%;outline:none}
-.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:8px 14px;cursor:pointer;font-weight:500;font-size:14px;white-space:nowrap}
+/* cabeçalho */
+.top{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:16px 28px;flex-wrap:wrap;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.brand b{display:block;font:700 26px/1 var(--display);letter-spacing:.06em;color:var(--brand)}
+.brand small{display:block;font:600 10px/1.4 var(--body);letter-spacing:.32em;color:var(--brand);opacity:.85}
+.search{flex:1 1 280px;max-width:520px;display:flex;align-items:center;gap:10px;background:var(--surface);border-radius:999px;padding:0 18px;box-shadow:0 1px 3px var(--shadow)}
+.search input{border:0;background:none;outline:none;padding:11px 0;width:100%;font-size:15px}
+.top-act{margin-left:auto;display:flex;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 14px;cursor:pointer;font-weight:500;font-size:14px;white-space:nowrap}
 .btn:hover{border-color:var(--muted)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
-.btn.primary:hover{filter:brightness(1.05)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.big{padding:12px 16px;font-size:15px;flex:1}
+.btn.danger{color:var(--m5);border-color:var(--m5)}
 
-/* biblioteca */
-.lib{display:grid;grid-template-columns:210px 1fr;gap:28px;align-items:start}
-.cats{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:flex;flex-direction:column;gap:2px}
-.cats h4,.panel h3{font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
-.cat-btn{display:flex;justify-content:space-between;gap:8px;text-align:left;border:0;background:none;padding:7px 10px;border-radius:5px;cursor:pointer;font-size:14px}
-.cat-btn:hover{background:var(--sunk)}
-.cat-btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);font-weight:600}
-.cat-btn span:last-child{font-family:var(--mono);font-size:12px;opacity:.7}
-.cats hr{border:0;border-top:1px solid var(--line);margin:10px 0}
-.lib-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:16px}
-.lib-head h1{font:600 30px/1.1 var(--display);margin:0;text-wrap:balance}
-.lib-head p{margin:0;color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
-.card{display:flex;flex-direction:column;border:1px solid var(--line);background:var(--surface);border-radius:8px;overflow:hidden;transition:border-color .15s,transform .15s}
-.card:hover{border-color:var(--muted);transform:translateY(-2px)}
-.card-open{display:flex;flex-direction:column;text-align:left;border:0;background:none;padding:0;cursor:pointer;flex:1}
-.card-dl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:0 14px 12px}
-.card-dl span{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:auto}
-.card-dl button{border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:3px 9px;font:500 12px var(--mono);cursor:pointer}
-.add-card{align-items:center;justify-content:center;gap:8px;border:2px dashed var(--line);background:none;cursor:pointer;min-height:280px;padding:24px;text-align:center;color:var(--muted);font-size:13px}
-.add-card:hover{border-color:var(--accent)}
-.add-card .plus{width:56px;height:56px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:600 32px/1 var(--display)}
-.add-card b{font:600 19px/1.2 var(--display);color:var(--ink)}
-dialog#add-dlg{border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);padding:0;width:min(580px,calc(100vw - 32px));max-height:calc(100dvh - 32px)}
-dialog#add-dlg::backdrop{background:rgb(10 14 18 / .55)}
+/* painel */
+.panel{max-width:1180px;margin:0 auto;background:var(--panel);border:1px solid var(--panel-line);border-radius:18px;padding:18px 24px 28px;box-shadow:0 10px 40px var(--shadow)}
+.tabs{display:flex;gap:4px 34px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tab{display:flex;align-items:center;gap:8px;background:none;border:0;padding:10px 2px 12px;cursor:pointer;color:var(--muted);font-size:15px;position:relative}
+.tab svg{flex:none}
+.tab[aria-selected="true"]{color:var(--ink);font-weight:600}
+.tab[aria-selected="true"]::after{content:"";position:absolute;left:18%;right:18%;bottom:-1px;height:3px;border-radius:3px;background:var(--accent)}
+.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px 22px;margin-bottom:14px;position:relative}
+.toolbar .lbl{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:3px 3px 3px 12px;cursor:pointer;background:var(--line);color:var(--muted);font-size:13px;font-weight:600;min-width:98px;justify-content:space-between}
+.switch::after{content:"";width:20px;height:20px;border-radius:50%;background:var(--surface);box-shadow:0 1px 2px var(--shadow)}
+.switch[aria-checked="true"]{background:var(--accent);color:var(--accent-ink)}
+.tool{display:inline-flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;font-size:14px;color:var(--ink);padding:4px 2px}
+.tool .n{font:500 11px var(--mono);background:var(--accent);color:var(--accent-ink);border-radius:9px;padding:0 6px}
+.count{margin-left:auto;font-size:13px;color:var(--muted)}
+.pop{position:absolute;top:calc(100% + 6px);z-index:5;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 28px var(--shadow);padding:10px;min-width:230px;display:flex;flex-direction:column;gap:2px}
+.pop label{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:14px}
+.pop label:hover{background:var(--sunk)}
+.pop input{accent-color:var(--accent)}
+.pop .pop-foot{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:6px;padding-top:8px}
+.linkbtn{border:0;background:none;color:var(--muted);font-size:13px;cursor:pointer;text-decoration:underline;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px;font-size:13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface);font-weight:600}
+
+/* grade de cards empilhados */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:34px 26px;padding-top:12px}
+.card{position:relative;display:flex;flex-direction:column;background:var(--surface);border-radius:8px;
+  box-shadow:0 -6px 0 -4px var(--surface),0 -6px 0 -3px var(--line),0 -12px 0 -9px var(--surface),0 -12px 0 -8px var(--line),0 2px 10px var(--shadow);
+  transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card-open{display:flex;flex-direction:column;border:0;background:none;padding:0;cursor:pointer;text-align:left;border-radius:8px 8px 0 0}
+.thumb{height:170px;max-width:100%;display:grid;place-items:center;background:var(--stage);border-bottom:1px solid var(--line);border-radius:8px 8px 0 0;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:contain;display:block}
+.thumb .ph{font:12px var(--mono);color:var(--muted)}
+.card-body{padding:16px 16px 10px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.card-body h3{margin:0;font:500 17px/1.3 var(--body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-body .sub{margin:0;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-var{margin:0 16px;padding:12px 0 0;border-top:1px solid var(--line);display:flex;justify-content:center}
+.card-var select,.var-sel{max-width:170px;width:100%;border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:3px 8px;font-size:12.5px;text-overflow:ellipsis;cursor:pointer}
+.card-var select:disabled{cursor:default;opacity:.8}
+.card-act{display:flex;justify-content:flex-end;gap:10px;padding:14px 14px 12px}
+.ico{display:inline-grid;place-items:center;width:36px;height:36px;border:0;background:none;border-radius:8px;cursor:pointer;color:var(--ink)}
+.ico:hover{background:var(--sunk)}
+.ico.fav[aria-pressed="true"]{color:var(--m5)}
+.ico.fav[aria-pressed="true"] path{fill:currentColor}
+.add-card{align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;min-height:330px;padding:24px;text-align:center;color:var(--muted);font-size:13px;outline:2px dashed var(--line);outline-offset:-10px}
+.add-card:hover{outline-color:var(--accent)}
+.add-card .plus{width:58px;height:58px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:600 34px/1 var(--display)}
+.add-card b{font:600 18px/1.2 var(--body);color:var(--ink)}
+.empty{grid-column:1/-1;padding:40px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px}
+.sec-title{grid-column:1/-1;margin:6px 0 -14px;font:600 13px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+/* ficha do modelo */
+.back{margin-bottom:14px}
+.det{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:22px;align-items:start}
+.stage-wrap{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--stage);border:1px solid var(--line);border-radius:12px;overflow:hidden;height:clamp(360px,70vh,760px)}
+#stage{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+#stage:active{cursor:grabbing}
+.views{position:absolute;top:10px;left:10px;display:flex;gap:4px;flex-wrap:wrap}
+.views button{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:5px 10px;font-size:12px;cursor:pointer}
+.views button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.views .sep{width:8px}
+.dims{position:absolute;top:12px;right:12px;font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+.legend{position:absolute;left:10px;bottom:10px;right:10px;display:flex;flex-wrap:wrap;gap:6px}
+.legend button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:4px 10px 4px 8px;font-size:12px;cursor:pointer}
+.legend button[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
+.side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.side section{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.side h3{font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.phead .cat{font-size:12px;color:var(--muted)}
+.phead h2{font:600 24px/1.2 var(--body);margin:4px 0 6px;text-wrap:balance}
+.phead p{margin:0;color:var(--muted);font-size:14px}
+.dl-row{display:flex;gap:8px;align-items:center;margin-top:12px}
+.dl-row .ico{border:1px solid var(--line);width:46px;height:46px}
+.note{font-size:12.5px;color:var(--muted);margin:10px 0 0}
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sec-head h3{margin:0}
+.params{display:flex;flex-direction:column;gap:12px}
+.prm label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+.prm output{font-family:var(--mono);font-size:13px}
+.prm input[type=range]{width:100%;accent-color:var(--accent)}
+.tbl{overflow-x:auto;margin:0 -4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font:500 11px var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:left;padding:4px;border-bottom:1px solid var(--line)}
+td{padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td .el{display:flex;align-items:center;gap:6px;font-weight:500;text-transform:capitalize}
+td select{width:100%;max-width:180px;border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:3px;font-size:12px}
+tfoot td{font-weight:600;border-bottom:0}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.totals div{background:var(--sunk);border-radius:8px;padding:8px 10px}
+.totals span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.totals b{font:600 18px/1.3 var(--mono)}
+.exp{display:flex;flex-wrap:wrap;gap:8px}
+.mt{margin-top:12px}
+.note.ask{margin:0;align-self:center}
+
+/* guia */
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.guide article{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.guide h2{font:600 18px/1.3 var(--body);margin:0 0 8px}
+.guide ol,.guide ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;max-width:65ch}
+.guide kbd{font:12px var(--mono);background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+
+/* adicionar estrutura */
+dialog#add-dlg{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);padding:0;width:min(580px,calc(100vw - 32px));max-height:calc(100dvh - 32px)}
+dialog#add-dlg::backdrop{background:rgb(10 14 18 / .5)}
 #add-form{display:flex;flex-direction:column;gap:14px;padding:20px}
 .dlg-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.dlg-head h2{font:700 24px/1.1 var(--display);margin:0}
+.dlg-head h2{font:600 22px/1.2 var(--body);margin:0}
 .x{border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px}
-.drop{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:24px 16px;border:2px dashed var(--line);border-radius:8px;text-align:center;cursor:pointer;background:var(--bg)}
+.drop{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:24px 16px;border:2px dashed var(--line);border-radius:10px;text-align:center;cursor:pointer;background:var(--sunk)}
 .drop:hover,.drop.over{border-color:var(--accent)}
-.drop.ok{border-style:solid;border-color:var(--m4)}
+.drop.ok{border-style:solid;border-color:var(--accent)}
 .drop:focus-within{outline:2px solid var(--accent);outline-offset:2px}
 .drop input{position:absolute;left:0;top:0;opacity:0;width:1px;height:1px}
 .drop b{overflow-wrap:anywhere}
-.drop span{font:12px var(--mono);color:var(--muted)}
+.drop span{font-size:12px;color:var(--muted)}
 .fld{display:flex;flex-direction:column;gap:4px;min-width:0}
-.fld[hidden]{display:none}
 .fld label{font-size:13px;font-weight:500}
-.fld input,.fld select,.fld textarea{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:8px 10px;width:100%}
+.fld input,.fld select,.fld textarea{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;width:100%}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .row2:not(:has(> :not([hidden]))){display:none}
 .help{font-size:12px;color:var(--muted);margin:0}
 .err{color:var(--m5);font-size:13px;font-weight:500;margin:0}
 .dlg-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px}
 .dlg-foot .help{margin-right:auto}
-.btn.danger{color:var(--m5);border-color:var(--m5)}
-.mt{margin-top:12px}
-.note.ask{margin:0;align-self:center}
-@media (max-width:520px){.row2{grid-template-columns:1fr}}
-.card-dl button.skp{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
-.card-dl button:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.thumb{aspect-ratio:16/11;max-width:100%;background:var(--stage);display:grid;place-items:center;position:relative}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .ph{font:12px var(--mono);color:var(--muted)}
-.thumb .star{position:absolute;top:8px;right:8px;font-size:15px;color:var(--accent)}
-.card-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:3px}
-.card-body .cat{font:500 11px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.card-body h3{font:600 18px/1.2 var(--display);margin:0}
-.card-body .meta{font-size:12px;color:var(--muted)}
-.empty{grid-column:1/-1;padding:48px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px}
-
-/* ficha */
-.det{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:22px;align-items:start}
-.crumb{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:13px;color:var(--muted)}
-.stage-wrap{position:relative;background:var(--stage);border:1px solid var(--line);border-radius:8px;overflow:hidden;height:clamp(360px,68vh,760px);position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
-#stage{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
-#stage:active{cursor:grabbing}
-.views{position:absolute;top:10px;left:10px;display:flex;gap:4px;flex-wrap:wrap}
-.views button{border:1px solid var(--line);background:var(--surface);border-radius:5px;padding:5px 10px;font-size:12px;cursor:pointer;font-family:var(--mono)}
-.views button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.legend{position:absolute;left:10px;bottom:10px;right:10px;display:flex;flex-wrap:wrap;gap:6px}
-.legend button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:4px 10px 4px 8px;font-size:12px;cursor:pointer}
-.legend button[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
-.dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
-.dims{position:absolute;top:12px;right:12px;font-size:12px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:4px 8px}
-.hint{position:absolute;right:12px;bottom:12px;font:11px var(--mono);color:var(--muted)}
-
-.panel{display:flex;flex-direction:column;gap:14px;min-width:0}
-.panel section{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px}
-.phead{display:flex;gap:12px;align-items:flex-start}
-.phead > div{flex:1;min-width:0}
-.phead .cat{font:500 11px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.phead h2{font:700 28px/1.1 var(--display);margin:4px 0 8px;text-wrap:balance}
-.phead p{margin:0;color:var(--muted);font-size:14px}
-.fav{border:1px solid var(--line);background:none;border-radius:6px;width:38px;height:38px;cursor:pointer;font-size:18px;color:var(--muted);flex:none}
-.fav[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
-.params{display:flex;flex-direction:column;gap:12px}
-.prm label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
-.prm output{font-family:var(--mono);font-size:13px}
-.prm input[type=range]{width:100%;accent-color:var(--accent)}
-.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.sec-head h3{margin:0}
-.linkbtn{border:0;background:none;color:var(--muted);font-size:12px;cursor:pointer;text-decoration:underline;padding:0}
-.tbl{overflow-x:auto;margin:0 -4px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:4px;border-bottom:1px solid var(--line)}
-td{padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:middle}
-td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-td .el{display:flex;align-items:center;gap:6px;font-weight:500;text-transform:capitalize}
-td select{width:100%;max-width:180px;border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:3px;font-size:12px}
-tfoot td{font-weight:600;border-bottom:0}
-.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-.totals div{background:var(--sunk);border-radius:6px;padding:8px 10px}
-.totals span{display:block;font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.totals b{font:600 18px/1.3 var(--mono)}
-.exp{display:flex;flex-wrap:wrap;gap:8px}
-.exp-out{margin-top:10px}
-.exp-out textarea{width:100%;height:130px;font:11px/1.4 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:8px;resize:vertical}
-.exp-out p{font-size:12px;color:var(--muted);margin:4px 0 0}
-.note{font-size:12px;color:var(--muted);margin:10px 0 0}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:6px;font-size:14px;z-index:10}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:10px 16px;border-radius:8px;font-size:14px;z-index:20;max-width:calc(100vw - 32px)}
 
 @media (max-width:900px){
   .det{grid-template-columns:1fr}
   .stage-wrap{position:relative;top:0;height:clamp(320px,58vh,520px)}
 }
-@media (max-width:720px){
-  .lib{grid-template-columns:1fr}
-  .cats{position:static;flex-direction:row;flex-wrap:wrap;gap:6px}
-  .cats h4,.cats hr{display:none}
-  .cat-btn{border:1px solid var(--line);padding:5px 10px}
-  .lib-head h1{font-size:24px}
+@media (max-width:600px){
+  .panel{padding:12px 14px 20px;border-radius:14px}
+  .tabs{gap:0 18px}
+  .tab{font-size:14px}
+  .tab svg{display:none}
+  .top-act .btn span{display:none}
+  .row2{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
 </style>
+</head>
+<body>
+<header class="top">
+  <button class="brand" id="home" aria-label="Acervo de Estruturas, voltar ao catálogo">
+    <svg width="36" height="36" viewBox="0 0 34 34" aria-hidden="true"><path d="M3 28 L17 5 L31 28 Z M3 28 H31 M10 17 L17 28 L24 17 M17 5 V28" fill="none" stroke="var(--brand)" stroke-width="2.6" stroke-linejoin="round"/><circle cx="17" cy="5" r="2.6" fill="var(--accent)"/></svg>
+    <span><b>ACERVO</b><small>ESTRUTURAS</small></span>
+  </button>
+  <label class="search"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--muted)" stroke-width="1.5"/><path d="M11 11l4 4" stroke="var(--muted)" stroke-width="1.5"/></svg><input id="q" type="search" placeholder="Nome do modelo" aria-label="Buscar pelo nome do modelo" autocomplete="off"></label>
+  <div class="top-act"><button class="btn primary" id="add-open" aria-label="Adicionar estrutura">+ <span>Adicionar estrutura</span></button></div>
+</header>
 
-<div class="wrap">
-  <header class="top">
-    <button class="brand" id="home" aria-label="Voltar à biblioteca">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M3 27 L17 5 L31 27 Z M3 27 H31 M10 16 L17 27 L24 16 M17 5 V27" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round"/></svg>
-      <span><b>Acervo de Estruturas</b><small>modelos 3D paramétricos</small></span>
-    </button>
-    <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--muted)" stroke-width="1.6"/><path d="M11 11l4 4" stroke="var(--muted)" stroke-width="1.6"/></svg><input id="q" type="search" placeholder="Buscar treliça, galpão, torre…" aria-label="Buscar modelos"></label>
-    <button class="btn primary" id="add-open">+ Adicionar estrutura</button>
-  </header>
+<main class="panel">
+  <nav class="tabs" role="tablist" aria-label="Seções">
+    <button class="tab" role="tab" data-tab="produtos" aria-selected="true"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 9.5 10 3.5l7 6V17h-5v-4.5H8V17H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Catálogo de produtos</button>
+    <button class="tab" role="tab" data-tab="solucoes" aria-selected="false"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7h14v9H3zM5 4h10v3H5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Soluções clássicas</button>
+    <button class="tab" role="tab" data-tab="minhas" aria-selected="false"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 13 7m-2-2 4 4M14 2.5v2M17.5 6h-2M16.5 3.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Minhas soluções</button>
+    <button class="tab" role="tab" data-tab="guia" aria-selected="false"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 5.5C8 4 5.5 3.8 3 4.3v11c2.5-.5 5-.3 7 1.2 2-1.5 4.5-1.7 7-1.2v-11c-2.5-.5-5-.3-7 1.2zm0 0v11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Guia</button>
+  </nav>
 
-  <main id="lib-view" class="lib">
-    <nav class="cats" id="cats" aria-label="Categorias"></nav>
-    <div>
-      <div class="lib-head"><h1 id="lib-title">Todos os modelos</h1><p id="lib-count"></p></div>
-      <div class="grid" id="grid"></div>
+  <section id="view-list">
+    <div class="toolbar">
+      <span class="lbl" id="quick-lbl">Filtro rápido</span>
+      <button class="switch" id="quick" role="switch" aria-checked="true" aria-labelledby="quick-lbl"><span id="quick-txt">Ligado</span></button>
+      <button class="tool" id="filter-btn" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14M5 9h8M7.5 14h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Filtrar<span class="n" id="filter-n" hidden></span></button>
+      <button class="tool" id="sort-btn" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2v13m0 0-4-4m4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="sort-txt">Ordenar</span></button>
+      <span class="count" id="count"></span>
+      <div class="pop" id="filter-pop" hidden></div>
+      <div class="pop" id="sort-pop" hidden></div>
     </div>
-  </main>
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+  </section>
 
-  <main id="det-view" hidden>
-    <div class="crumb"><button class="btn" id="back">← Biblioteca</button><span id="crumb-cat"></span></div>
+  <section id="view-guide" hidden>
+    <div class="guide">
+      <article>
+        <h2>Baixar para o SketchUp</h2>
+        <ol>
+          <li>Escolha a medida no seletor abaixo do nome do modelo.</li>
+          <li>Clique no ícone de download. O arquivo <b>.skp</b> baixa pronto para abrir.</li>
+          <li>No SketchUp, use <kbd>Arquivo › Abrir</kbd>, ou arraste o .skp para dentro de um modelo aberto para inseri-lo como componente.</li>
+        </ol>
+        <p class="note">Cada barra vem como um grupo, separada por tipo (banzo, diagonal, pilar…), com etiqueta e material próprios. Os arquivos abrem no SketchUp 2017 ou mais novo.</p>
+      </article>
+      <article>
+        <h2>Medidas personalizadas</h2>
+        <ol>
+          <li>Clique no desenho do modelo para abrir a ficha.</li>
+          <li>Em <b>Personalizar medidas</b>, ajuste vão, altura e módulos.</li>
+          <li>Baixe em <b>.dae</b> e importe no SketchUp em <kbd>Arquivo › Importar › COLLADA</kbd>.</li>
+        </ol>
+        <p class="note">O .skp pronto existe para as medidas do catálogo. Medidas personalizadas saem em .dae, que o SketchUp importa com os mesmos grupos.</p>
+      </article>
+      <article>
+        <h2>Adicionar estrutura</h2>
+        <ul>
+          <li>Use o card <b>+ Adicionar estrutura</b>, sempre no fim da lista.</li>
+          <li>Aceita <b>.dae</b> (no SketchUp: <kbd>Arquivo › Exportar › Modelo 3D › COLLADA</kbd>), <b>.dxf</b>, <b>.obj</b> e <b>.stl</b>.</li>
+          <li>DXF com linhas de eixo vira estrutura de barras, com lista de materiais: cada camada vira um tipo de barra.</li>
+          <li>As estruturas adicionadas ficam em <b>Minhas soluções</b>, salvas neste navegador.</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Outros formatos</h2>
+        <ul>
+          <li><b>.dae</b>: SketchUp (Importar), Blender, 3ds Max.</li>
+          <li><b>.obj</b>: Blender, Revit, Rhino.</li>
+          <li><b>.dxf</b>: AutoCAD, FreeCAD, SAP2000. Linhas de eixo em camadas por tipo de barra.</li>
+          <li><b>.csv</b>: lista de materiais para planilha, com perfil, metros e peso.</li>
+        </ul>
+        <p class="note">Pesos nominais de catálogo, sem ligações, chapas e parafusos. Servem para orçamento e não substituem o dimensionamento.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="view-det" hidden>
+    <button class="btn back" id="back">← Voltar</button>
     <div class="det">
       <div class="stage-wrap">
         <canvas id="stage" aria-label="Visualização 3D do modelo"></canvas>
@@ -209,18 +290,29 @@ tfoot td{font-weight:600;border-bottom:0}
           <button data-v="front" aria-pressed="false">Frente</button>
           <button data-v="top" aria-pressed="false">Topo</button>
           <button data-v="side" aria-pressed="false">Lateral</button>
+          <span class="sep"></span>
+          <button data-s="traco" aria-pressed="true">Traço</button>
+          <button data-s="cores" aria-pressed="false">Cores</button>
+          <span class="sep"></span>
           <button data-v="spin" aria-pressed="false">Girar</button>
         </div>
         <div class="dims mono" id="dims"></div>
         <div class="legend" id="legend"></div>
       </div>
-      <aside class="panel">
+      <aside class="side">
         <section class="phead">
-          <div><span class="cat" id="d-cat"></span><h2 id="d-name"></h2><p id="d-desc"></p></div>
-          <button class="fav" id="fav" aria-pressed="false" aria-label="Salvar modelo">★</button>
+          <span class="cat" id="d-cat"></span>
+          <h2 id="d-name"></h2>
+          <p id="d-desc"></p>
+          <div class="fld mt" id="d-var-wrap"><label for="d-var">Medida</label><select id="d-var" class="var-sel"></select></div>
+          <div class="dl-row">
+            <button class="btn primary big" id="d-skp">Baixar para SketchUp</button>
+            <button class="ico fav" id="fav" aria-pressed="false" aria-label="Salvar em Minhas soluções"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.3C1.7 8 3.7 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.5 0 5.5 3.5 4.4 6.7C19.5 15.9 12 20.5 12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
+          </div>
+          <p class="note" id="d-dlnote"></p>
         </section>
         <section id="sec-params">
-          <div class="sec-head"><h3>Parâmetros</h3><button class="linkbtn" id="reset">Restaurar padrão</button></div>
+          <div class="sec-head"><h3>Personalizar medidas</h3><button class="linkbtn" id="reset">Voltar à medida do catálogo</button></div>
           <div class="params" id="params"></div>
         </section>
         <section id="sec-bom">
@@ -236,23 +328,18 @@ tfoot td{font-weight:600;border-bottom:0}
           <div class="exp mt" id="del-confirm" hidden><span class="note ask">Excluir de vez deste navegador?</span><button class="btn danger" id="del-yes">Sim, excluir</button><button class="btn" id="del-no">Cancelar</button></div>
         </section>
         <section id="sec-exp">
-          <div class="sec-head"><h3>Exportar</h3></div>
+          <h3>Outros formatos</h3>
           <div class="exp">
-            <button class="btn primary" data-exp="dae">Baixar para SketchUp</button>
-            <button class="btn" data-exp="obj">Copiar OBJ</button>
-            <button class="btn" data-exp="dxf">Copiar DXF</button>
-            <button class="btn" data-exp="csv">Copiar CSV</button>
-          </div>
-          <div class="exp-out" id="exp-out" hidden>
-            <textarea id="exp-text" readonly aria-label="Conteúdo exportado"></textarea>
-            <p id="exp-hint"></p>
+            <button class="btn" data-exp="dae">SketchUp (.dae)</button>
+            <button class="btn" data-exp="obj">OBJ</button>
+            <button class="btn" data-exp="dxf">DXF</button>
+            <button class="btn" data-exp="csv">CSV</button>
           </div>
         </section>
       </aside>
     </div>
-  </main>
-</div>
-<div class="toast" id="toast" hidden></div>
+  </section>
+</main>
 
 <dialog id="add-dlg" aria-labelledby="add-title">
   <form id="add-form" novalidate>
@@ -275,909 +362,17 @@ tfoot td{font-weight:600;border-bottom:0}
     <div class="fld"><label for="f-desc">Descrição</label><textarea id="f-desc" rows="3" maxlength="400" placeholder="Uso, vão, carga, observações de montagem…"></textarea></div>
     <div class="fld"><label for="f-tags">Palavras-chave</label><input id="f-tags" maxlength="120" placeholder="Ex.: mezanino, piso, depósito"></div>
     <p class="err" id="add-err" role="alert" hidden></p>
-    <div class="dlg-foot"><span class="help">Fica salva neste navegador.</span><button type="button" class="btn" id="add-cancel">Cancelar</button><button type="submit" class="btn primary">Adicionar estrutura</button></div>
+    <div class="dlg-foot"><span class="help">Fica salva neste navegador, em Minhas soluções.</span><button type="button" class="btn" id="add-cancel">Cancelar</button><button type="submit" class="btn primary">Adicionar estrutura</button></div>
   </form>
 </dialog>
+<div class="toast" id="toast" role="status" hidden></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/ColladaLoader.js"></script>
-<script>
-(() => {
-const $ = s => document.querySelector(s);
-const m = (a, b, t) => ({ a, b, t });
-const lerp = (a, b, t) => a + (b - a) * t;
-const fmt = (v, d = 1) => v.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-
-/* ---------- perfis (kg/m nominal) ---------- */
-const PERFIS = [
-  { id: 'L50', nome: 'Cantoneira L 50×5', kg: 3.77, d: .05 },
-  { id: 'L76', nome: 'Cantoneira L 76×6,3', kg: 7.29, d: .076 },
-  { id: 'TQ50', nome: 'Tubo quadrado 50×50×3', kg: 4.43, d: .05 },
-  { id: 'TQ100', nome: 'Tubo quadrado 100×100×4', kg: 11.7, d: .1 },
-  { id: 'TC60', nome: 'Tubo redondo Ø60,3×3,6', kg: 5.03, d: .06 },
-  { id: 'U150', nome: 'U 152×12,2', kg: 12.2, d: .152 },
-  { id: 'W150', nome: 'W 150×13', kg: 13.0, d: .15 },
-  { id: 'W200', nome: 'W 200×22,5', kg: 22.5, d: .2 },
-  { id: 'W250', nome: 'W 250×32,7', kg: 32.7, d: .25 },
-  { id: 'W310', nome: 'W 310×38,7', kg: 38.7, d: .31 },
-  { id: 'W360', nome: 'W 360×51', kg: 51.0, d: .355 },
-];
-const PF = Object.fromEntries(PERFIS.map(p => [p.id, p]));
-
-/* ---------- geradores ---------- */
-function trussPlane(L, H, n, kind, z, out) {
-  const dx = L / n, x0 = -L / 2;
-  const B = i => [x0 + i * dx, 0, z], T = i => [x0 + i * dx, H, z];
-  if (kind === 'warren') {
-    const Tm = i => [x0 + (i + .5) * dx, H, z];
-    for (let i = 0; i < n; i++) {
-      out.push(m(B(i), B(i + 1), 'banzo inferior'), m(B(i), Tm(i), 'diagonal'), m(Tm(i), B(i + 1), 'diagonal'));
-      if (i < n - 1) out.push(m(Tm(i), Tm(i + 1), 'banzo superior'));
-    }
-    return out;
-  }
-  for (let i = 0; i < n; i++) out.push(m(B(i), B(i + 1), 'banzo inferior'), m(T(i), T(i + 1), 'banzo superior'));
-  for (let i = 0; i <= n; i++) out.push(m(B(i), T(i), 'montante'));
-  if (kind === 'vierendeel') return out;
-  for (let i = 0; i < n; i++) {
-    const left = (i + .5) < n / 2;
-    if (kind === 'pratt') out.push(left ? m(T(i), B(i + 1), 'diagonal') : m(B(i), T(i + 1), 'diagonal'));
-    else out.push(left ? m(B(i), T(i + 1), 'diagonal') : m(T(i), B(i + 1), 'diagonal'));
-  }
-  return out;
-}
-const P = (k, label, min, max, step, v, u = 'm') => ({ k, label, min, max, step, v, u });
-const TRUSS_T = ['banzo superior', 'banzo inferior', 'montante', 'diagonal'];
-const TRUSS_PROF = { 'banzo superior': 'L76', 'banzo inferior': 'L76', 'montante': 'L50', 'diagonal': 'L50' };
-
-const MODELS = [
-  { id: 'pratt', name: 'Treliça Pratt', cat: 'Treliças planas', tags: 'viga treliçada banzo paralelo',
-    desc: 'Banzos paralelos com diagonais tracionadas descendo para o centro. Boa para vãos médios com carga gravitacional.',
-    params: [P('L', 'Vão', 4, 40, .5, 12), P('H', 'Altura', .4, 5, .1, 1.5), P('n', 'Painéis', 2, 24, 1, 8, '')],
-    types: TRUSS_T, prof: TRUSS_PROF, build: p => trussPlane(p.L, p.H, p.n, 'pratt', 0, []) },
-  { id: 'howe', name: 'Treliça Howe', cat: 'Treliças planas', tags: 'viga treliçada madeira',
-    desc: 'Diagonais comprimidas subindo para o centro e montantes tracionados. Clássica em madeira.',
-    params: [P('L', 'Vão', 4, 40, .5, 12), P('H', 'Altura', .4, 5, .1, 1.5), P('n', 'Painéis', 2, 24, 1, 8, '')],
-    types: TRUSS_T, prof: TRUSS_PROF, build: p => trussPlane(p.L, p.H, p.n, 'howe', 0, []) },
-  { id: 'warren', name: 'Treliça Warren', cat: 'Treliças planas', tags: 'viga treliçada triangular',
-    desc: 'Triângulos equiláteros alternados, sem montantes. Menos barras e esforços que alternam tração e compressão.',
-    params: [P('L', 'Vão', 4, 40, .5, 14), P('H', 'Altura', .4, 5, .1, 1.4), P('n', 'Módulos', 2, 24, 1, 8, '')],
-    types: ['banzo superior', 'banzo inferior', 'diagonal'], prof: TRUSS_PROF, build: p => trussPlane(p.L, p.H, p.n, 'warren', 0, []) },
-  { id: 'vierendeel', name: 'Viga Vierendeel', cat: 'Treliças planas', tags: 'vierendeel quadro rígido aberturas',
-    desc: 'Quadros rígidos sem diagonais. Libera passagem entre montantes; os nós trabalham à flexão.',
-    params: [P('L', 'Vão', 4, 30, .5, 10), P('H', 'Altura', .6, 4, .1, 2), P('n', 'Painéis', 2, 16, 1, 5, '')],
-    types: ['banzo superior', 'banzo inferior', 'montante'], prof: { 'banzo superior': 'TQ100', 'banzo inferior': 'TQ100', 'montante': 'TQ100' },
-    build: p => trussPlane(p.L, p.H, p.n, 'vierendeel', 0, []) },
-  { id: 'tesoura', name: 'Tesoura de duas águas', cat: 'Coberturas', tags: 'telhado tesoura cobertura fink',
-    desc: 'Tesoura triangular para telhado de duas águas, com montantes e diagonais em leque.',
-    params: [P('L', 'Vão', 4, 30, .5, 10), P('H', 'Altura da cumeeira', .5, 6, .1, 2), P('n', 'Painéis (par)', 2, 20, 2, 8, '')],
-    types: TRUSS_T, prof: TRUSS_PROF,
-    build: ({ L, H, n }) => {
-      const out = [], dx = L / n, x0 = -L / 2, y = x => H * (1 - Math.abs(x) / (L / 2));
-      const B = i => [x0 + i * dx, 0, 0], T = i => { const x = x0 + i * dx; return [x, y(x), 0]; };
-      for (let i = 0; i < n; i++) out.push(m(B(i), B(i + 1), 'banzo inferior'), m(T(i), T(i + 1), 'banzo superior'));
-      for (let i = 1; i < n; i++) out.push(m(B(i), T(i), 'montante'));
-      for (let i = 0; i < n; i++) {
-        if (i < n / 2) { if (i > 0) out.push(m(T(i), B(i + 1), 'diagonal')); }
-        else if (i + 1 < n) out.push(m(B(i), T(i + 1), 'diagonal'));
-      }
-      return out;
-    } },
-  { id: 'arco', name: 'Arco treliçado', cat: 'Coberturas', tags: 'arco parabólico cobertura curva',
-    desc: 'Arco parabólico com seção treliçada de altura constante. Para coberturas curvas de grande vão.',
-    params: [P('L', 'Vão', 10, 60, 1, 30), P('f', 'Flecha', 2, 15, .5, 7), P('h', 'Altura da seção', .4, 2.5, .1, 1), P('n', 'Módulos', 6, 40, 1, 20, '')],
-    types: TRUSS_T, prof: { 'banzo superior': 'TC60', 'banzo inferior': 'TC60', 'montante': 'L50', 'diagonal': 'L50' },
-    build: ({ L, f, h, n }) => {
-      const out = [], A = [], C = [];
-      for (let i = 0; i <= n; i++) {
-        const x = -L / 2 + i * L / n, yy = f * (1 - (2 * x / L) ** 2), d = -8 * f * x / (L * L), k = Math.hypot(d, 1);
-        A.push([x, yy, 0]); C.push([x - d / k * h, yy + h / k, 0]);
-      }
-      for (let i = 0; i < n; i++) {
-        out.push(m(A[i], A[i + 1], 'banzo inferior'), m(C[i], C[i + 1], 'banzo superior'));
-        out.push(i % 2 ? m(C[i], A[i + 1], 'diagonal') : m(A[i], C[i + 1], 'diagonal'));
-      }
-      for (let i = 0; i <= n; i++) out.push(m(A[i], C[i], 'montante'));
-      return out;
-    } },
-  { id: 'espacial', name: 'Estrutura espacial', cat: 'Coberturas', tags: 'space frame malha espacial tubular',
-    desc: 'Malha de pirâmides com banzos ortogonais em dois planos. Cobre grandes áreas com apoios espaçados.',
-    params: [P('nx', 'Módulos em X', 2, 16, 1, 8, ''), P('nz', 'Módulos em Z', 2, 16, 1, 6, ''), P('a', 'Módulo', 1, 4, .25, 2.5), P('h', 'Altura', .6, 3, .1, 1.8)],
-    types: ['banzo superior', 'banzo inferior', 'diagonal'], prof: { 'banzo superior': 'TC60', 'banzo inferior': 'TC60', 'diagonal': 'TC60' },
-    build: ({ nx, nz, a, h }) => {
-      const out = [], x0 = -nx * a / 2, z0 = -nz * a / 2;
-      const T = (i, j) => [x0 + i * a, h, z0 + j * a], B = (i, j) => [x0 + (i + .5) * a, 0, z0 + (j + .5) * a];
-      for (let i = 0; i <= nx; i++) for (let j = 0; j <= nz; j++) {
-        if (i < nx) out.push(m(T(i, j), T(i + 1, j), 'banzo superior'));
-        if (j < nz) out.push(m(T(i, j), T(i, j + 1), 'banzo superior'));
-      }
-      for (let i = 0; i < nx; i++) for (let j = 0; j < nz; j++) {
-        if (i + 1 < nx) out.push(m(B(i, j), B(i + 1, j), 'banzo inferior'));
-        if (j + 1 < nz) out.push(m(B(i, j), B(i, j + 1), 'banzo inferior'));
-        out.push(m(B(i, j), T(i, j), 'diagonal'), m(B(i, j), T(i + 1, j), 'diagonal'), m(B(i, j), T(i, j + 1), 'diagonal'), m(B(i, j), T(i + 1, j + 1), 'diagonal'));
-      }
-      return out;
-    } },
-  { id: 'galpao', name: 'Galpão em pórticos', cat: 'Galpões e edifícios', tags: 'galpão barracão pórtico terça industrial',
-    desc: 'Pórticos de alma cheia com terças, cumeeira e contraventamento em X nos vãos de extremidade.',
-    params: [P('B', 'Vão (largura)', 8, 40, .5, 20), P('C', 'Comprimento', 10, 90, 1, 36), P('Hp', 'Altura do pilar', 3, 14, .25, 7), P('i', 'Inclinação', 3, 30, 1, 10, '%'), P('nb', 'Vãos entre pórticos', 2, 15, 1, 6, '')],
-    types: ['pilar', 'viga', 'terça', 'contravento'], prof: { pilar: 'W250', viga: 'W250', 'terça': 'U150', contravento: 'TC60' },
-    build: ({ B, C, Hp, i, nb }) => {
-      const out = [], e = C / nb, hr = Hp + B / 2 * i / 100, Z = k => -C / 2 + k * e;
-      const eaveL = z => [-B / 2, Hp, z], eaveR = z => [B / 2, Hp, z], ridge = z => [0, hr, z];
-      const along = (p, q, t) => p.map((v, k) => lerp(v, q[k], t));
-      for (let k = 0; k <= nb; k++) {
-        const z = Z(k);
-        out.push(m([-B / 2, 0, z], eaveL(z), 'pilar'), m([B / 2, 0, z], eaveR(z), 'pilar'), m(eaveL(z), ridge(z), 'viga'), m(ridge(z), eaveR(z), 'viga'));
-      }
-      const ts = [0, 1 / 3, 2 / 3];
-      for (let k = 0; k < nb; k++) {
-        const z1 = Z(k), z2 = Z(k + 1);
-        for (const t of ts) {
-          out.push(m(along(eaveL(z1), ridge(z1), t), along(eaveL(z2), ridge(z2), t), 'terça'));
-          out.push(m(along(eaveR(z1), ridge(z1), t), along(eaveR(z2), ridge(z2), t), 'terça'));
-        }
-        out.push(m(ridge(z1), ridge(z2), 'terça'));
-        if (k === 0 || k === nb - 1) {
-          for (const x of [-B / 2, B / 2]) out.push(m([x, 0, z1], [x, Hp, z2], 'contravento'), m([x, Hp, z1], [x, 0, z2], 'contravento'));
-          out.push(m(eaveL(z1), ridge(z2), 'contravento'), m(ridge(z1), eaveL(z2), 'contravento'), m(eaveR(z1), ridge(z2), 'contravento'), m(ridge(z1), eaveR(z2), 'contravento'));
-        }
-      }
-      return out;
-    } },
-  { id: 'edificio', name: 'Edifício em pórtico', cat: 'Galpões e edifícios', tags: 'prédio pavimentos pilar viga contraventado',
-    desc: 'Malha de pilares e vigas por pavimento, com contraventamento em X no vão central de cada fachada.',
-    params: [P('nx', 'Vãos em X', 1, 8, 1, 4, ''), P('nz', 'Vãos em Z', 1, 6, 1, 3, ''), P('a', 'Vão', 3, 10, .5, 6), P('h', 'Pé-direito', 2.6, 5, .1, 3.2), P('np', 'Pavimentos', 1, 20, 1, 6, ''), P('cv', 'Contraventamento', 0, 1, 1, 1, 'liga')],
-    types: ['pilar', 'viga', 'contravento'], prof: { pilar: 'W310', viga: 'W250', contravento: 'TC60' },
-    build: ({ nx, nz, a, h, np, cv }) => {
-      const out = [], x0 = -nx * a / 2, z0 = -nz * a / 2, X = i => x0 + i * a, Zc = j => z0 + j * a;
-      for (let f = 0; f < np; f++) for (let i = 0; i <= nx; i++) for (let j = 0; j <= nz; j++) out.push(m([X(i), f * h, Zc(j)], [X(i), (f + 1) * h, Zc(j)], 'pilar'));
-      for (let f = 1; f <= np; f++) for (let i = 0; i <= nx; i++) for (let j = 0; j <= nz; j++) {
-        if (i < nx) out.push(m([X(i), f * h, Zc(j)], [X(i + 1), f * h, Zc(j)], 'viga'));
-        if (j < nz) out.push(m([X(i), f * h, Zc(j)], [X(i), f * h, Zc(j + 1)], 'viga'));
-      }
-      if (cv) {
-        const ci = Math.floor((nx - 1) / 2), cj = Math.floor((nz - 1) / 2);
-        for (let f = 0; f < np; f++) {
-          const y1 = f * h, y2 = (f + 1) * h;
-          for (const j of [0, nz]) out.push(m([X(ci), y1, Zc(j)], [X(ci + 1), y2, Zc(j)], 'contravento'), m([X(ci + 1), y1, Zc(j)], [X(ci), y2, Zc(j)], 'contravento'));
-          for (const i of [0, nx]) out.push(m([X(i), y1, Zc(cj)], [X(i), y2, Zc(cj + 1)], 'contravento'), m([X(i), y1, Zc(cj + 1)], [X(i), y2, Zc(cj)], 'contravento'));
-        }
-      }
-      return out;
-    } },
-  { id: 'torre', name: 'Torre treliçada', cat: 'Torres', tags: 'torre autoportante telecomunicação antena',
-    desc: 'Torre autoportante de seção quadrada com afunilamento e diagonais em X em todas as faces.',
-    params: [P('H', 'Altura', 6, 80, 1, 30), P('b', 'Base', 1.5, 12, .25, 6), P('t', 'Topo', .8, 6, .1, 1.5), P('n', 'Módulos', 3, 30, 1, 10, '')],
-    types: ['montante', 'horizontal', 'diagonal'], prof: { montante: 'L76', horizontal: 'L50', diagonal: 'L50' },
-    build: ({ H, b, t, n }) => {
-      const out = [], sg = [[-1, -1], [1, -1], [1, 1], [-1, 1]];
-      const c = (k, q) => { const s = lerp(b, t, k / n) / 2, [u, v] = sg[q % 4]; return [u * s, k * H / n, v * s]; };
-      for (let k = 0; k <= n; k++) for (let q = 0; q < 4; q++) {
-        out.push(m(c(k, q), c(k, q + 1), 'horizontal'));
-        if (k < n) out.push(m(c(k, q), c(k + 1, q), 'montante'), m(c(k, q), c(k + 1, q + 1), 'diagonal'), m(c(k, q + 1), c(k + 1, q), 'diagonal'));
-      }
-      return out;
-    } },
-  { id: 'ponte', name: 'Ponte treliçada', cat: 'Pontes', tags: 'ponte passarela pratt tabuleiro',
-    desc: 'Duas treliças Pratt ligadas por transversinas no tabuleiro e contraventamento superior em X.',
-    params: [P('L', 'Vão', 10, 80, 1, 36), P('W', 'Largura', 2, 12, .5, 6), P('H', 'Altura', 2, 10, .25, 5), P('n', 'Painéis', 4, 20, 1, 8, '')],
-    types: ['banzo superior', 'banzo inferior', 'montante', 'diagonal', 'transversina', 'contravento'],
-    prof: { 'banzo superior': 'W310', 'banzo inferior': 'W310', montante: 'W200', diagonal: 'W200', transversina: 'W360', contravento: 'L76' },
-    build: ({ L, W, H, n }) => {
-      const out = [];
-      trussPlane(L, H, n, 'pratt', -W / 2, out); trussPlane(L, H, n, 'pratt', W / 2, out);
-      const X = i => -L / 2 + i * L / n;
-      for (let i = 0; i <= n; i++) {
-        out.push(m([X(i), 0, -W / 2], [X(i), 0, W / 2], 'transversina'));
-        if (i > 0 && i < n) out.push(m([X(i), H, -W / 2], [X(i), H, W / 2], 'contravento'));
-      }
-      for (let i = 1; i < n - 1; i++) out.push(m([X(i), H, -W / 2], [X(i + 1), H, W / 2], 'contravento'), m([X(i), H, W / 2], [X(i + 1), H, -W / 2], 'contravento'));
-      return out;
-    } },
-];
-const CATS = ['Treliças planas', 'Coberturas', 'Galpões e edifícios', 'Torres', 'Pontes'];
-
-/* ---------- estado ---------- */
-const store = {
-  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
-  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
-};
-let saved = new Set(store.get('acervo.saved', []));
-let cat = 'Todos', query = '';
-const userModels = [];
-const thumbs = {}, summary = {};
-let cur = null, params = {}, prof = {}, hidden = new Set(), members = [];
-
-const defaults = md => Object.fromEntries(md.params.map(p => [p.k, p.v]));
-const allModels = () => MODELS.concat(userModels);
-const byId = id => allModels().find(x => x.id === id);
-
-/* ---------- cores ---------- */
-let COL = {};
-function readColors() {
-  const cs = getComputedStyle(document.documentElement), g = k => cs.getPropertyValue(k).trim();
-  COL = { stage: g('--stage'), grid: g('--grid'), node: g('--node'), m: ['--m1', '--m2', '--m3', '--m4', '--m5', '--m6'].map(g), user: g('--m3') };
-}
-const typeColor = (md, t) => COL.m[Math.max(0, md.types.indexOf(t)) % 6];
-
-/* ---------- construção 3D ---------- */
-const UP = new THREE.Vector3(0, 1, 0);
-const CYL = new THREE.CylinderGeometry(1, 1, 1, 8, 1);
-const SPH = new THREE.SphereGeometry(1, 10, 8);
-
-function bounds(mem) {
-  const b = new THREE.Box3();
-  for (const x of mem) { b.expandByPoint(new THREE.Vector3(...x.a)); b.expandByPoint(new THREE.Vector3(...x.b)); }
-  return b;
-}
-function uniqueNodes(mem) {
-  const map = new Map();
-  for (const x of mem) for (const p of [x.a, x.b]) map.set(p.map(v => v.toFixed(3)).join(','), p);
-  return [...map.values()];
-}
-function buildObject(md, mem, pmap, hid) {
-  const g = new THREE.Group();
-  if (md.user) {
-    const o = md.object.clone();
-    o.traverse(c => { if (c.isMesh) c.material = new THREE.MeshStandardMaterial({ color: COL.user, metalness: .2, roughness: .6, side: THREE.DoubleSide }); });
-    g.add(o);
-    const box = new THREE.Box3().setFromObject(g);
-    addGrid(g, box);
-    return { group: g, box };
-  }
-  const box = bounds(mem), size = box.getSize(new THREE.Vector3()).length() || 1;
-  const byType = {};
-  for (const x of mem) (byType[x.t] ||= []).push(x);
-  let rmax = 0;
-  const mat4 = new THREE.Matrix4(), q = new THREE.Quaternion(), va = new THREE.Vector3(), vb = new THREE.Vector3(), dir = new THREE.Vector3(), mid = new THREE.Vector3(), sc = new THREE.Vector3();
-  for (const t in byType) {
-    const pf = PF[pmap[t]] || PERFIS[0];
-    const r = Math.min(Math.max(pf.d * .5, size * .0028), size * .012);
-    rmax = Math.max(rmax, r);
-    if (hid.has(t)) continue;
-    const list = byType[t];
-    const mat = new THREE.MeshStandardMaterial({ color: typeColor(md, t), metalness: .35, roughness: .5 });
-    const im = new THREE.InstancedMesh(CYL, mat, list.length);
-    list.forEach((x, i) => {
-      va.set(...x.a); vb.set(...x.b); dir.subVectors(vb, va);
-      const len = dir.length(); dir.normalize();
-      q.setFromUnitVectors(UP, dir); mid.addVectors(va, vb).multiplyScalar(.5); sc.set(r, len, r);
-      mat4.compose(mid, q, sc); im.setMatrixAt(i, mat4);
-    });
-    g.add(im);
-  }
-  const nodes = uniqueNodes(mem.filter(x => !hid.has(x.t)));
-  if (nodes.length) {
-    const nm = new THREE.InstancedMesh(SPH, new THREE.MeshStandardMaterial({ color: COL.node, roughness: .6 }), nodes.length);
-    nodes.forEach((p, i) => { mat4.compose(new THREE.Vector3(...p), new THREE.Quaternion(), new THREE.Vector3(rmax * 1.35, rmax * 1.35, rmax * 1.35)); nm.setMatrixAt(i, mat4); });
-    g.add(nm);
-  }
-  addGrid(g, box);
-  return { group: g, box };
-}
-function addGrid(g, box) {
-  const s = box.getSize(new THREE.Vector3()), span = Math.max(s.x, s.z, s.y * .6, 1) * 1.6;
-  const div = Math.min(40, Math.max(6, Math.round(span)));
-  const grid = new THREE.GridHelper(span, div, COL.grid, COL.grid);
-  const c = box.getCenter(new THREE.Vector3());
-  grid.position.set(c.x, box.min.y - .001, c.z);
-  g.add(grid);
-}
-function makeScene() {
-  const s = new THREE.Scene();
-  s.add(new THREE.HemisphereLight(0xffffff, 0x667080, .85));
-  const d = new THREE.DirectionalLight(0xffffff, .75); d.position.set(3, 6, 4); s.add(d);
-  const d2 = new THREE.DirectionalLight(0xffffff, .25); d2.position.set(-4, 2, -3); s.add(d2);
-  return s;
-}
-function viewDir(box, v) {
-  const s = box.getSize(new THREE.Vector3()), planar = s.z < .02 * Math.max(s.x, s.y);
-  if (v === 'front') return new THREE.Vector3(0, .02, 1);
-  if (v === 'top') return new THREE.Vector3(0, 1, .001);
-  if (v === 'side') return new THREE.Vector3(1, .02, 0);
-  return planar ? new THREE.Vector3(.45, .3, 1) : new THREE.Vector3(1, .75, 1.25);
-}
-function fit(cam, box, v, target) {
-  const c = box.getCenter(new THREE.Vector3()), s = box.getSize(new THREE.Vector3());
-  const r = Math.max(s.length() / 2, .5);
-  const dist = r / Math.sin(THREE.MathUtils.degToRad(cam.fov / 2)) * (cam.aspect < 1 ? 1.25 / cam.aspect : 1) * .95;
-  cam.position.copy(c).add(viewDir(box, v).normalize().multiplyScalar(dist));
-  cam.near = dist / 100; cam.far = dist * 20; cam.updateProjectionMatrix();
-  cam.lookAt(c); if (target) target.copy(c);
-}
-
-/* ---------- miniaturas ---------- */
-const tR = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-tR.setPixelRatio(1); tR.setSize(480, 330);
-const tCam = new THREE.PerspectiveCamera(35, 480 / 330, .1, 1000);
-let thumbQueue = [], thumbBusy = false;
-function queueThumbs(ids) { thumbQueue.push(...ids); if (!thumbBusy) pump(); }
-function pump() {
-  const id = thumbQueue.shift();
-  if (!id) { thumbBusy = false; return; }
-  thumbBusy = true;
-  const md = byId(id);
-  if (md) {
-    const pm = defaults(md), mem = md.user ? [] : md.build(pm);
-    const { group, box } = buildObject(md, mem, md.prof || {}, new Set());
-    const sc = makeScene(); sc.add(group);
-    tR.setClearColor(COL.stage); fit(tCam, box, 'iso'); tR.render(sc, tCam);
-    thumbs[id] = tR.domElement.toDataURL('image/png');
-    disposeGroup(group);
-    const img = document.querySelector(`.card[data-id="${id}"] .thumb`);
-    if (img) img.innerHTML = thumbHTML(id);
-  }
-  requestAnimationFrame(pump);
-}
-function disposeGroup(g) { g.traverse(o => { if (o.material) o.material.dispose?.(); if (o.isInstancedMesh) o.dispose?.(); if (o.isGridHelper) o.geometry.dispose(); }); }
-
-/* ---------- resumo / BOM ---------- */
-function bom(md, mem, pmap) {
-  const rows = md.types.map(t => ({ t, n: 0, len: 0 }));
-  const idx = Object.fromEntries(rows.map((r, i) => [r.t, i]));
-  for (const x of mem) { const r = rows[idx[x.t]]; r.n++; r.len += Math.hypot(x.b[0] - x.a[0], x.b[1] - x.a[1], x.b[2] - x.a[2]); }
-  rows.forEach(r => r.kg = r.len * (PF[pmap[r.t]]?.kg || 0));
-  return rows.filter(r => r.n);
-}
-for (const md of MODELS) {
-  const pm = defaults(md), mem = md.build(pm), rows = bom(md, mem, md.prof);
-  summary[md.id] = { bars: mem.length, kg: rows.reduce((s, r) => s + r.kg, 0) };
-}
-
-/* ---------- biblioteca ---------- */
-function thumbHTML(id) {
-  return (thumbs[id] ? `<img src="${thumbs[id]}" alt="">` : `<span class="ph">gerando…</span>`) + (saved.has(id) ? '<span class="star" aria-label="Salvo">★</span>' : '');
-}
-function filtered() {
-  const qq = query.trim().toLowerCase();
-  return allModels().filter(md => {
-    if (cat === 'Salvos' && !saved.has(md.id)) return false;
-    if (cat === 'Meus modelos') { if (!md.custom) return false; }
-    else if (cat !== 'Todos' && cat !== 'Salvos' && md.cat !== cat) return false;
-    if (qq && !`${md.name} ${md.cat} ${md.tags || ''}`.toLowerCase().includes(qq)) return false;
-    return true;
-  });
-}
-function renderCats() {
-  const all = allModels(), count = c => c === 'Todos' ? all.length : c === 'Salvos' ? all.filter(x => saved.has(x.id)).length : c === 'Meus modelos' ? userModels.length : all.filter(x => x.cat === c).length;
-  const btn = (c, label = c) => `<button class="cat-btn" data-cat="${esc(c)}" aria-pressed="${c === cat}"><span>${esc(label)}</span><span>${count(c)}</span></button>`;
-  $('#cats').innerHTML = '<h4>Categorias</h4>' + ['Todos', ...allCats()].map(c => btn(c)).join('')
-    + '<hr>' + btn('Salvos', '★ Salvos') + (userModels.length ? btn('Meus modelos', 'Adicionadas por mim') : '');
-}
-function cardMeta(md) {
-  if (md.user) return `${md.fmt} · ${fmt(md.tris, 0)} triângulos`;
-  const p = md.params[0], s = summary[md.id] || { bars: 0, kg: 0 };
-  if (!p) return `${md.fmt} · ${s.bars} barras · ${fmt(s.kg, 0)} kg`;
-  return `${p.label.toLowerCase()} ${fmt(p.v, p.v % 1 ? 1 : 0)} ${p.u} · ${s.bars} barras · ${fmt(s.kg, 0)} kg`;
-}
-function renderGrid() {
-  const list = filtered();
-  $('#lib-title').textContent = cat === 'Todos' ? 'Todos os modelos' : cat === 'Meus modelos' ? 'Adicionadas por mim' : cat;
-  $('#lib-count').textContent = `${list.length} ${list.length === 1 ? 'modelo' : 'modelos'}${query ? ` para “${query}”` : ''}`;
-  $('#grid').innerHTML = list.length ? list.map(md => `
-    <article class="card" data-id="${md.id}">
-      <button class="card-open" aria-label="Abrir ${esc(md.name)}">
-        <div class="thumb">${thumbHTML(md.id)}</div>
-        <div class="card-body"><span class="cat">${esc(md.cat)}</span><h3>${esc(md.name)}</h3><span class="meta mono">${esc(cardMeta(md))}</span></div>
-      </button>
-      <div class="card-dl"><span>Baixar</span>${(md.user ? ['dae', 'obj'] : ['dae', 'obj', 'dxf', 'csv']).map(k => `<button data-dl="${k}"${k === 'dae' ? ' class="skp"' : ''} aria-label="Baixar ${esc(md.name)} ${k === 'dae' ? 'para SketchUp' : 'em ' + k.toUpperCase()}">${k === 'dae' ? 'SketchUp' : k.toUpperCase()}</button>`).join('')}</div>
-    </article>`).join('')
-    : `<div class="empty">${cat === 'Salvos' ? 'Nenhum modelo salvo ainda. Abra um modelo e toque em ★ para guardá-lo aqui.' : 'Nenhum modelo encontrado. Tente outro termo, como “treliça” ou “galpão”, ou adicione a sua estrutura.'}</div>`;
-  $('#grid').insertAdjacentHTML('beforeend', `<button class="card add-card" id="add-card"><span class="plus" aria-hidden="true">+</span><b>Adicionar estrutura</b><span>Envie um .dae do SketchUp, um .dxf, .obj ou .stl</span></button>`);
-  renderCats();
-}
-$('#cats').addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (!b) return; cat = b.dataset.cat; renderGrid(); });
-$('#q').addEventListener('input', e => { query = e.target.value; if (!$('#det-view').hidden) showLib(); renderGrid(); });
-$('#grid').addEventListener('click', e => {
-  if (e.target.closest('#add-card')) return openAdd();
-  const c = e.target.closest('.card'); if (!c) return;
-  const dl = e.target.closest('[data-dl]');
-  if (!dl) return openModel(c.dataset.id);
-  const md = byId(c.dataset.id), pm = md.user ? {} : defaults(md), mem = md.user ? [] : md.build(pm);
-  exportFile(dl.dataset.dl, md, mem, { ...(md.prof || {}) }, pm);
-});
-
-/* ---------- ficha / palco ---------- */
-const canvas = $('#stage');
-const R = new THREE.WebGLRenderer({ canvas, antialias: true });
-R.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
-const cam = new THREE.PerspectiveCamera(35, 1, .1, 1000);
-const controls = new THREE.OrbitControls(cam, canvas);
-controls.enableDamping = true; controls.dampingFactor = .08; controls.autoRotateSpeed = 1.2;
-let scene = makeScene(), obj = null, box = null, running = false, view = 'iso';
-
-function resize() {
-  const w = canvas.clientWidth, h = canvas.clientHeight;
-  if (!w || !h) return;
-  R.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
-}
-new ResizeObserver(resize).observe(canvas);
-function loop() { if (!running) return; controls.update(); R.render(scene, cam); requestAnimationFrame(loop); }
-
-function rebuild(refit) {
-  if (obj) { scene.remove(obj); disposeGroup(obj); }
-  members = cur.user ? [] : cur.build(params);
-  const r = buildObject(cur, members, prof, hidden);
-  obj = r.group; box = r.box; scene.add(obj);
-  R.setClearColor(COL.stage);
-  if (refit) { resize(); fit(cam, box, view, controls.target); }
-  const s = box.getSize(new THREE.Vector3());
-  $('#dims').textContent = `${fmt(s.x)} × ${fmt(s.z)} × ${fmt(s.y)} m`;
-  if (!cur.user) renderBom();
-}
-function renderLegend() {
-  if (cur.user) { $('#legend').innerHTML = ''; return; }
-  $('#legend').innerHTML = cur.types.map(t => `<button data-t="${esc(t)}" aria-pressed="${!hidden.has(t)}"><span class="dot" style="background:${typeColor(cur, t)}"></span>${esc(t)}</button>`).join('');
-}
-function renderParams() {
-  $('#params').innerHTML = cur.params.map(p => {
-    const toggle = p.u === 'liga';
-    return `<div class="prm"><label for="p-${p.k}"><span>${esc(p.label)}</span><output id="o-${p.k}">${pval(p, params[p.k])}</output></label>
-      <input type="range" id="p-${p.k}" data-k="${p.k}" min="${p.min}" max="${p.max}" step="${p.step}" value="${params[p.k]}"${toggle ? ' aria-valuetext="' + (params[p.k] ? 'ligado' : 'desligado') + '"' : ''}></div>`;
-  }).join('');
-}
-const pval = (p, v) => p.u === 'liga' ? (v ? 'sim' : 'não') : `${fmt(v, p.step % 1 ? (p.step < .1 ? 2 : p.step === .25 ? 2 : 1) : 0)}${p.u ? ' ' + p.u : ''}`;
-function renderBom() {
-  const rows = bom(cur, members, prof);
-  const tl = rows.reduce((s, r) => s + r.len, 0), tk = rows.reduce((s, r) => s + r.kg, 0);
-  $('#bom').innerHTML = rows.map((r, i) => `<tr>
-    <td><span class="el"><span class="dot" style="background:${typeColor(cur, r.t)}"></span>${esc(r.t)}</span></td>
-    <td><select id="perf-${i}" data-t="${esc(r.t)}" aria-label="Perfil de ${esc(r.t)}">${PERFIS.map(p => `<option value="${p.id}"${p.id === prof[r.t] ? ' selected' : ''}>${p.nome}</option>`).join('')}</select></td>
-    <td class="n">${r.n}</td><td class="n">${fmt(r.len)}</td><td class="n">${fmt(r.kg, 0)}</td></tr>`).join('');
-  $('#bom-foot').innerHTML = `<tr><td colspan="2">Total</td><td class="n">${members.length}</td><td class="n">${fmt(tl)}</td><td class="n">${fmt(tk, 0)}</td></tr>`;
-  const s = box.getSize(new THREE.Vector3()), area = s.x * Math.max(s.z, 0);
-  const third = area > 1 ? ['kg/m² em planta', fmt(tk / area, 1)] : ['kg por metro de vão', fmt(tk / Math.max(s.x, 1), 1)];
-  $('#totals').innerHTML = `<div><span>Nós</span><b>${uniqueNodes(members).length}</b></div><div><span>Peso total</span><b>${fmt(tk / 1000, 2)} t</b></div><div><span>${third[0]}</span><b>${third[1]}</b></div>`;
-}
-function openModel(id) {
-  cur = byId(id); if (!cur) return;
-  params = cur.user ? {} : defaults(cur);
-  prof = { ...(cur.prof || {}) }; hidden = new Set(); view = 'iso';
-  $('#lib-view').hidden = true; $('#det-view').hidden = false;
-  $('#crumb-cat').textContent = cur.cat;
-  $('#d-cat').textContent = cur.cat; $('#d-name').textContent = cur.name; $('#d-desc').textContent = cur.desc;
-  $('#fav').setAttribute('aria-pressed', saved.has(id));
-  $('#sec-params').hidden = !!cur.user || !cur.params.length;
-  $('#sec-bom').hidden = !!cur.user;
-  $('#sec-imp').hidden = !cur.custom;
-  $('#del-row').hidden = false; $('#del-confirm').hidden = true;
-  $('#exp-out').hidden = true;
-  document.querySelectorAll('[data-exp]').forEach(b => b.hidden = cur.user && !['obj', 'dae'].includes(b.dataset.exp));
-  if (cur.custom) {
-    const when = cur.rec?.created ? new Date(cur.rec.created).toLocaleDateString('pt-BR') : 'hoje';
-    $('#imp-info').textContent = cur.user
-      ? `Arquivo ${cur.rec.fileName} (${cur.fmt}, ${fmt(cur.tris, 0)} triângulos), adicionado em ${when}. Para ter lista de materiais e peso, envie a estrutura em DXF com linhas de eixo. Fica salva neste navegador.`
-      : `Arquivo ${cur.rec.fileName} com ${cur.build().length} barras em ${cur.types.length} camadas, adicionado em ${when}. Troque os perfis na lista de materiais. Fica salva neste navegador.`;
-  }
-  setViewBtns();
-  renderParams(); renderLegend();
-  window.scrollTo({ top: 0 });
-  requestAnimationFrame(() => { rebuild(true); if (!running) { running = true; loop(); } });
-}
-function showLib() {
-  running = false; $('#det-view').hidden = true; $('#lib-view').hidden = false;
-  controls.autoRotate = false; renderGrid();
-}
-$('#back').onclick = showLib; $('#home').onclick = showLib;
-
-$('#params').addEventListener('input', e => {
-  const k = e.target.dataset.k; if (!k) return;
-  const p = cur.params.find(x => x.k === k);
-  params[k] = +e.target.value; $('#o-' + k).textContent = pval(p, params[k]);
-  rebuild(false);
-});
-$('#params').addEventListener('change', () => fit(cam, box, view, controls.target));
-$('#reset').onclick = () => { params = defaults(cur); prof = { ...cur.prof }; renderParams(); rebuild(true); };
-$('#bom').addEventListener('change', e => { if (e.target.dataset.t) { prof[e.target.dataset.t] = e.target.value; rebuild(false); } });
-$('#legend').addEventListener('click', e => {
-  const b = e.target.closest('[data-t]'); if (!b) return;
-  const t = b.dataset.t; hidden.has(t) ? hidden.delete(t) : hidden.add(t);
-  b.setAttribute('aria-pressed', !hidden.has(t)); rebuild(false);
-});
-function setViewBtns() { document.querySelectorAll('#views [data-v]').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === 'spin' ? controls.autoRotate : b.dataset.v === view)); }
-$('#views').addEventListener('click', e => {
-  const b = e.target.closest('[data-v]'); if (!b) return;
-  if (b.dataset.v === 'spin') controls.autoRotate = !controls.autoRotate;
-  else { view = b.dataset.v; fit(cam, box, view, controls.target); }
-  setViewBtns();
-});
-$('#fav').onclick = () => {
-  saved.has(cur.id) ? saved.delete(cur.id) : saved.add(cur.id);
-  store.set('acervo.saved', [...saved]);
-  $('#fav').setAttribute('aria-pressed', saved.has(cur.id));
-  toast(saved.has(cur.id) ? 'Salvo em ★ Salvos' : 'Removido dos salvos');
-};
-
-/* ---------- exportação ---------- */
-const n3 = v => (Math.round(v * 1e4) / 1e4).toString();
-function toOBJ(md, mem, pm, prm) {
-  if (md.user) {
-    let out = `# ${md.name}\n`, off = 1;
-    md.object.updateMatrixWorld(true);
-    md.object.traverse(o => {
-      if (!o.isMesh) return;
-      const g = o.geometry.index ? o.geometry.toNonIndexed() : o.geometry, pos = g.attributes.position, v = new THREE.Vector3();
-      for (let i = 0; i < pos.count; i++) { v.fromBufferAttribute(pos, i).applyMatrix4(o.matrixWorld); out += `v ${n3(v.x)} ${n3(v.y)} ${n3(v.z)}\n`; }
-      for (let i = 0; i < pos.count; i += 3) out += `f ${off + i} ${off + i + 1} ${off + i + 2}\n`;
-      off += pos.count;
-    });
-    return out;
-  }
-  let out = `# ${md.name} — Acervo de Estruturas\n# unidades: metros, Y para cima\n# ${Object.entries(prm).map(([k, v]) => k + '=' + v).join(' ')}\n`, vi = 1;
-  const groups = {};
-  for (const x of mem) (groups[x.t] ||= []).push(x);
-  const A = new THREE.Vector3(), B = new THREE.Vector3(), u = new THREE.Vector3(), v = new THREE.Vector3(), w = new THREE.Vector3();
-  for (const t in groups) {
-    out += `g ${t.replace(/\s+/g, '_')}\n`;
-    const h = (PF[pm[t]]?.d || .05) / 2;
-    for (const x of groups[t]) {
-      A.set(...x.a); B.set(...x.b); u.subVectors(B, A).normalize();
-      v.crossVectors(u, Math.abs(u.y) < .9 ? UP : new THREE.Vector3(1, 0, 0)).normalize().multiplyScalar(h);
-      w.crossVectors(u, v).normalize().multiplyScalar(h);
-      const corners = [[1, 1], [-1, 1], [-1, -1], [1, -1]];
-      for (const P0 of [A, B]) for (const [s1, s2] of corners) {
-        const p = P0.clone().addScaledVector(v, s1).addScaledVector(w, s2);
-        out += `v ${n3(p.x)} ${n3(p.y)} ${n3(p.z)}\n`;
-      }
-      const o = vi; vi += 8;
-      out += `f ${o} ${o + 3} ${o + 2} ${o + 1}\nf ${o + 4} ${o + 5} ${o + 6} ${o + 7}\n`;
-      for (let k = 0; k < 4; k++) { const k2 = (k + 1) % 4; out += `f ${o + k} ${o + k2} ${o + 4 + k2} ${o + 4 + k}\n`; }
-    }
-  }
-  return out;
-}
-/* Collada (.dae): o formato que qualquer SketchUp importa (Arquivo › Importar). Z para cima, metros, cada barra um grupo. */
-const DAE_COLORS = ['#2d5c89', '#c98500', '#62717e', '#34876a', '#a44848', '#6f57a3'];
-const xesc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c]));
-const zup = p => `${n3(p.x)} ${n3(-p.z)} ${n3(p.y)}`;
-function barCorners(x, h) {
-  const A = new THREE.Vector3(...x.a), B = new THREE.Vector3(...x.b), u = new THREE.Vector3().subVectors(B, A).normalize();
-  const v = new THREE.Vector3().crossVectors(u, Math.abs(u.y) < .9 ? UP : new THREE.Vector3(1, 0, 0)).normalize().multiplyScalar(h);
-  const w = new THREE.Vector3().crossVectors(u, v).normalize().multiplyScalar(h);
-  const out = [];
-  for (const P0 of [A, B]) for (const [s1, s2] of [[1, 1], [-1, 1], [-1, -1], [1, -1]]) out.push(P0.clone().addScaledVector(v, s1).addScaledVector(w, s2));
-  return out;
-}
-const BOX_TRIS = [0, 3, 2, 0, 2, 1, 4, 5, 6, 4, 6, 7, 0, 1, 5, 0, 5, 4, 1, 2, 6, 1, 6, 5, 2, 3, 7, 2, 7, 6, 3, 0, 4, 3, 4, 7].join(' ');
-function daeGeometry(id, name, pos, tris) {
-  return `<geometry id="${id}" name="${xesc(name)}"><mesh>
-<source id="${id}-p"><float_array id="${id}-a" count="${pos.length * 3}">${pos.map(zup).join(' ')}</float_array><technique_common><accessor source="#${id}-a" count="${pos.length}" stride="3"><param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
-<vertices id="${id}-v"><input semantic="POSITION" source="#${id}-p"/></vertices>
-<triangles material="mat" count="${tris.split(' ').length / 3}"><input semantic="VERTEX" source="#${id}-v" offset="0"/><p>${tris}</p></triangles>
-</mesh></geometry>\n`;
-}
-const daeInst = (gid, mid) => `<instance_geometry url="#${gid}"><bind_material><technique_common><instance_material symbol="mat" target="#${mid}"/></technique_common></bind_material></instance_geometry>`;
-function toDAE(md, mem, pm, prm) {
-  const now = new Date().toISOString(), mats = [], geos = [];
-  let nodes = '';
-  const addMat = (i, name, hex) => {
-    const c = new THREE.Color(hex);
-    mats.push({ id: 'm' + i, name, rgb: `${c.r.toFixed(3)} ${c.g.toFixed(3)} ${c.b.toFixed(3)}` });
-    return 'm' + i;
-  };
-  if (md.user) {
-    const mid = addMat(0, 'modelo', '#8a96a0');
-    md.object.updateMatrixWorld(true);
-    let gi = 0;
-    md.object.traverse(o => {
-      if (!o.isMesh) return;
-      const g = o.geometry.index ? o.geometry.toNonIndexed() : o.geometry, pa = g.attributes.position, pos = [];
-      for (let i = 0; i < pa.count; i++) pos.push(new THREE.Vector3().fromBufferAttribute(pa, i).applyMatrix4(o.matrixWorld));
-      const gid = 'g' + gi++;
-      geos.push(daeGeometry(gid, md.name, pos, pos.map((_, i) => i).join(' ')));
-      nodes += `<node id="n${gid}" name="${xesc(md.name)}">${daeInst(gid, mid)}</node>\n`;
-    });
-  } else {
-    const groups = {};
-    for (const x of mem) (groups[x.t] ||= []).push(x);
-    let gi = 0;
-    md.types.forEach((t, ti) => {
-      if (!groups[t]) return;
-      const mid = addMat(ti, `${t} - ${PF[pm[t]]?.nome || ''}`, DAE_COLORS[ti % 6]);
-      const h = (PF[pm[t]]?.d || .05) / 2;
-      nodes += `<node id="t${ti}" name="${xesc(t)} (${xesc(PF[pm[t]]?.nome || '')})">\n`;
-      groups[t].forEach((x, k) => {
-        const gid = 'g' + gi++;
-        geos.push(daeGeometry(gid, `${t} ${k + 1}`, barCorners(x, h), BOX_TRIS));
-        nodes += `<node id="n${gid}" name="${xesc(t)} ${k + 1}">${daeInst(gid, mid)}</node>\n`;
-      });
-      nodes += '</node>\n';
-    });
-  }
-  return `<?xml version="1.0" encoding="utf-8"?>
-<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
-<asset><contributor><authoring_tool>Acervo de Estruturas</authoring_tool><comments>${xesc(md.name)} ${xesc(Object.entries(prm).map(([k, v]) => k + '=' + v).join(' '))}</comments></contributor><created>${now}</created><modified>${now}</modified><unit name="meter" meter="1"/><up_axis>Z_UP</up_axis></asset>
-<library_effects>${mats.map(m => `<effect id="${m.id}-fx"><profile_COMMON><technique sid="common"><lambert><diffuse><color>${m.rgb} 1</color></diffuse></lambert></technique></profile_COMMON></effect>`).join('')}</library_effects>
-<library_materials>${mats.map(m => `<material id="${m.id}" name="${xesc(m.name)}"><instance_effect url="#${m.id}-fx"/></material>`).join('')}</library_materials>
-<library_geometries>
-${geos.join('')}</library_geometries>
-<library_visual_scenes><visual_scene id="Scene" name="Scene"><node id="root" name="${xesc(md.name)}">
-${nodes}</node></visual_scene></library_visual_scenes>
-<scene><instance_visual_scene url="#Scene"/></scene>
-</COLLADA>
-`;
-}
-function toDXF(md, mem) {
-  let out = '0\nSECTION\n2\nENTITIES\n';
-  for (const x of mem) {
-    const L = x.t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '_').toUpperCase();
-    out += `0\nLINE\n8\n${L}\n10\n${n3(x.a[0])}\n20\n${n3(-x.a[2])}\n30\n${n3(x.a[1])}\n11\n${n3(x.b[0])}\n21\n${n3(-x.b[2])}\n31\n${n3(x.b[1])}\n`;
-  }
-  return out + '0\nENDSEC\n0\nEOF\n';
-}
-function toCSV(md, mem, pm) {
-  const rows = bom(md, mem, pm);
-  return '\ufeffelemento;perfil;kg_m;quantidade;comprimento_m;peso_kg\n' + rows.map(r => [r.t, PF[pm[r.t]].nome, fmt(PF[pm[r.t]].kg, 2), r.n, fmt(r.len, 2), fmt(r.kg, 1)].join(';')).join('\n');
-}
-const HINTS = {
-  dae: 'Cole e salve como .dae. No SketchUp: Arquivo › Importar › Collada (.dae). Cada barra vira um grupo, separado por tipo.',
-  obj: 'Cole num arquivo de texto e salve como .obj. Abre no SketchUp (Importar › OBJ), Blender e Revit. Cada tipo de barra vira um grupo.',
-  dxf: 'Cole e salve como .dxf. Linhas de eixo em camadas por tipo de barra, Z para cima. Abre no AutoCAD, SketchUp, FreeCAD e SAP2000.',
-  csv: 'Cole numa planilha (separador ponto e vírgula) para montar o orçamento.'
-};
-const MIME = { dae: 'model/vnd.collada+xml', obj: 'model/obj', dxf: 'application/dxf', csv: 'text/csv;charset=utf-8' };
-/* Dentro do visualizador do claude.ai (iframe) o navegador bloqueia downloads; aberto do seu computador, baixa normalmente. */
-let framed = true; try { framed = window.self !== window.top; } catch {}
-const canDownload = !framed;
-const slug = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-function fileName(md, prm, k) {
-  const ps = md.user || !md.params.length ? '' : '_' + md.params.filter(p => p.u !== 'liga').slice(0, 3).map(p => `${p.k}${String(prm[p.k]).replace('.', ',')}`).join('_');
-  return `${slug(md.name)}${ps}.${k}`;
-}
-/* ZIP sem compressão (um arquivo) — o link publicado só permite baixar .zip/.csv, não .obj/.dxf */
-const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
-function makeZip(name, text) {
-  const enc = new TextEncoder(), nm = enc.encode(name), data = enc.encode(text);
-  let crc = 0xFFFFFFFF; for (const b of data) crc = CRC[(crc ^ b) & 255] ^ (crc >>> 8); crc = (crc ^ 0xFFFFFFFF) >>> 0;
-  const lh = new DataView(new ArrayBuffer(30)), cd = new DataView(new ArrayBuffer(46)), eo = new DataView(new ArrayBuffer(22));
-  [[0, 0x04034b50, 4], [4, 20, 2], [6, 0x0800, 2], [8, 0, 2], [10, 0, 2], [12, 0x21, 2], [14, crc, 4], [18, data.length, 4], [22, data.length, 4], [26, nm.length, 2], [28, 0, 2]]
-    .forEach(([o, v, s]) => s === 4 ? lh.setUint32(o, v, true) : lh.setUint16(o, v, true));
-  [[0, 0x02014b50, 4], [4, 20, 2], [6, 20, 2], [8, 0x0800, 2], [10, 0, 2], [12, 0, 2], [14, 0x21, 2], [16, crc, 4], [20, data.length, 4], [24, data.length, 4], [28, nm.length, 2], [30, 0, 2], [32, 0, 2], [34, 0, 2], [36, 0, 2], [38, 0, 4], [42, 0, 4]]
-    .forEach(([o, v, s]) => s === 4 ? cd.setUint32(o, v, true) : cd.setUint16(o, v, true));
-  const cdOff = 30 + nm.length + data.length, cdSize = 46 + nm.length;
-  [[0, 0x06054b50, 4], [4, 0, 2], [6, 0, 2], [8, 1, 2], [10, 1, 2], [12, cdSize, 4], [16, cdOff, 4], [20, 0, 2]]
-    .forEach(([o, v, s]) => s === 4 ? eo.setUint32(o, v, true) : eo.setUint16(o, v, true));
-  return new Blob([lh, nm, data, cd, nm, eo], { type: 'application/zip' });
-}
-let DL = null;
-try { window.claude?.use?.('downloads').then(x => { DL = x; }, () => {}); } catch {}
-async function exportFile(k, md, mem, pm, prm) {
-  const txt = k === 'dae' ? toDAE(md, mem, pm, prm) : k === 'obj' ? toOBJ(md, mem, pm, prm) : k === 'dxf' ? toDXF(md, mem) : toCSV(md, mem, pm);
-  const name = fileName(md, prm, k);
-  if (canDownload) {
-    const url = URL.createObjectURL(new Blob([txt], { type: MIME[k] }));
-    const a = document.createElement('a'); a.href = url; a.download = name;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 4000);
-    toast(`Baixando ${name}`);
-    return;
-  }
-  if (DL) {
-    const zipped = k !== 'csv', filename = zipped ? name.replace(/\.\w+$/, '') + `_${k}.zip` : name;
-    try {
-      await DL.save({ filename, data: zipped ? makeZip(name, txt) : new Blob([txt]) });
-      toast(zipped ? `Baixado ${filename}. Descompacte para obter ${name}.` : `Baixado ${filename}`);
-      return;
-    } catch (err) {
-      if (err?.code === 'declined') return toast('Download cancelado.');
-      if (err?.code === 'rate_limited') return toast('Já há um download aguardando confirmação. Conclua-o e tente de novo.');
-    }
-  }
-  const inDetail = !$('#det-view').hidden;
-  if (inDetail) { $('#exp-text').value = txt; $('#exp-hint').textContent = `${HINTS[k]} Nome sugerido: ${name}`; $('#exp-out').hidden = false; }
-  const kb = (txt.length / 1024).toFixed(0);
-  const fallback = () => { if (inDetail) { $('#exp-text').focus(); $('#exp-text').select(); } toast(`Não deu para copiar. ${inDetail ? 'Selecione o texto abaixo e use Ctrl+C.' : 'Abra o modelo e use Exportar.'}`); };
-  try { navigator.clipboard.writeText(txt).then(() => toast(`Download indisponível aqui. ${k.toUpperCase()} copiado (${kb} KB); salve como ${name}`), fallback); } catch { fallback(); }
-}
-document.querySelectorAll('[data-exp]').forEach(b => {
-  b.textContent = b.dataset.exp === 'dae' ? 'Baixar para SketchUp (.dae)' : 'Baixar ' + b.dataset.exp.toUpperCase();
-  b.addEventListener('click', () => exportFile(b.dataset.exp, cur, members, prof, params));
-});
-
-/* ---------- adicionar estrutura ---------- */
-/* Guardado no IndexedDB deste navegador: continua lá ao recarregar, mas não aparece para outras pessoas. */
-const idb = (() => {
-  let p;
-  const open = () => p ||= new Promise((res, rej) => {
-    const r = indexedDB.open('acervo-estruturas', 1);
-    r.onupgradeneeded = () => r.result.createObjectStore('estruturas', { keyPath: 'id' });
-    r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
-  });
-  const tx = async (mode, fn) => {
-    const db = await open();
-    return new Promise((res, rej) => {
-      const t = db.transaction('estruturas', mode), r = fn(t.objectStore('estruturas'));
-      t.oncomplete = () => res(r?.result); t.onerror = () => rej(t.error); t.onabort = () => rej(t.error);
-    });
-  };
-  return { all: () => tx('readonly', s => s.getAll()), put: rec => tx('readwrite', s => s.put(rec)), del: id => tx('readwrite', s => s.delete(id)) };
-})();
-
-const layerType = l => { l = (l || '').trim(); return !l || l === '0' ? 'barra' : l.replace(/_/g, ' ').toLowerCase(); };
-function parseDXF(text, k) {
-  const L = text.split(/\r?\n/), ents = [];
-  let e = null;
-  for (let i = 0; i + 1 < L.length; i += 2) {
-    const c = parseInt(L[i], 10), v = L[i + 1].trim();
-    if (c === 0) { e = { type: v, g: [] }; ents.push(e); } else if (e) e.g.push([c, v]);
-  }
-  const raw = [];
-  let sec = '', poly = null;
-  const get = (en, c) => { const f = en.g.find(x => x[0] === c); return f ? f[1] : undefined; };
-  const num = (en, c) => +(get(en, c) || 0);
-  const closePoly = () => {
-    if (!poly) return;
-    const P = poly.pts;
-    for (let i = 0; i + 1 < P.length; i++) raw.push([P[i], P[i + 1], poly.t]);
-    if (poly.closed && P.length > 2) raw.push([P[P.length - 1], P[0], poly.t]);
-    poly = null;
-  };
-  for (const en of ents) {
-    if (en.type === 'SECTION') { sec = get(en, 2) || ''; continue; }
-    if (sec !== 'ENTITIES') continue;
-    if (en.type === 'LINE') raw.push([[num(en, 10), num(en, 20), num(en, 30)], [num(en, 11), num(en, 21), num(en, 31)], layerType(get(en, 8))]);
-    else if (en.type === 'LWPOLYLINE') {
-      const z = num(en, 38), pts = [];
-      for (const [c, v] of en.g) { if (c === 10) pts.push([+v, 0, z]); else if (c === 20 && pts.length) pts[pts.length - 1][1] = +v; }
-      poly = { pts, t: layerType(get(en, 8)), closed: num(en, 70) & 1 }; closePoly();
-    } else if (en.type === 'POLYLINE') { closePoly(); poly = { pts: [], t: layerType(get(en, 8)), closed: num(en, 70) & 1 }; }
-    else if (en.type === 'VERTEX' && poly) poly.pts.push([num(en, 10), num(en, 20), num(en, 30)]);
-    else if (en.type === 'SEQEND') closePoly();
-  }
-  closePoly();
-  /* DXF é Z para cima. Desenho 2D (tudo em Z=0) é tratado como elevação, em pé. */
-  const flat = raw.every(([a, b]) => !a[2] && !b[2]);
-  const conv = p => flat ? [p[0] * k, p[1] * k, 0] : [p[0] * k, p[2] * k, -p[1] * k];
-  const mem = raw.map(([a, b, t]) => m(conv(a), conv(b), t)).filter(x => Math.hypot(x.b[0] - x.a[0], x.b[1] - x.a[1], x.b[2] - x.a[2]) > 1e-6);
-  if (!mem.length) return mem;
-  const bb = bounds(mem), c = bb.getCenter(new THREE.Vector3());
-  const sh = p => [p[0] - c.x, p[1] - bb.min.y, p[2] - c.z];
-  return mem.map(x => m(sh(x.a), sh(x.b), x.t));
-}
-function recordToModel(rec) {
-  const k = +rec.unit || 1, base = { id: rec.id, name: rec.name, cat: rec.cat, desc: rec.desc || '', tags: rec.tags || '', custom: true, fmt: rec.fmt.toUpperCase(), rec, params: [] };
-  if (rec.fmt === 'dxf') {
-    const mem = parseDXF(rec.data, k);
-    if (!mem.length) throw new Error('O DXF não tem linhas (LINE ou POLYLINE) na área de desenho.');
-    const types = [...new Set(mem.map(x => x.t))];
-    return { ...base, types, prof: Object.fromEntries(types.map(t => [t, rec.prof || 'L50'])), build: () => mem };
-  }
-  let object;
-  if (rec.fmt === 'stl') { const geo = new THREE.STLLoader().parse(rec.data); geo.computeVertexNormals(); object = new THREE.Mesh(geo); }
-  else if (rec.fmt === 'obj') object = new THREE.OBJLoader().parse(rec.data);
-  else if (rec.fmt === 'dae') {
-    if (!THREE.ColladaLoader) throw new Error('O leitor de .dae não carregou. Verifique a internet e tente de novo.');
-    object = new THREE.ColladaLoader().parse(rec.data, '').scene;
-  } else throw new Error('Formato não aceito. Use .dae, .dxf, .obj ou .stl.');
-  if (rec.fmt !== 'dae') object.scale.setScalar(k);
-  let tris = 0;
-  object.traverse(o => { if (o.isMesh) { const g = o.geometry; tris += (g.index ? g.index.count : g.attributes.position.count) / 3; } });
-  if (!tris) throw new Error('O arquivo não tem faces 3D para mostrar.');
-  const g = new THREE.Group(); g.add(object); g.updateMatrixWorld(true);
-  const bb = new THREE.Box3().setFromObject(g), c = bb.getCenter(new THREE.Vector3());
-  object.position.sub(new THREE.Vector3(c.x, bb.min.y, c.z));
-  return { ...base, user: true, object: g, tris, types: [] };
-}
-function addSummary(md) {
-  if (md.user) return;
-  const mem = md.build({});
-  summary[md.id] = { bars: mem.length, kg: bom(md, mem, md.prof).reduce((s, r) => s + r.kg, 0) };
-}
-
-const dlg = $('#add-dlg'), ACCEPT = ['dae', 'dxf', 'obj', 'stl'];
-let pending = null;
-function allCats() { return [...new Set([...CATS, ...userModels.map(x => x.cat)])]; }
-function openAdd() {
-  $('#add-form').reset(); pending = null;
-  $('#drop').classList.remove('ok'); $('#drop-t').textContent = 'Arraste o arquivo aqui ou clique para escolher';
-  $('#add-err').hidden = true;
-  const pre = allCats().includes(cat) ? cat : CATS[0];
-  $('#f-cat').innerHTML = allCats().map(c => `<option${c === pre ? ' selected' : ''}>${esc(c)}</option>`).join('') + '<option value="__nova">+ Nova categoria…</option>';
-  $('#f-prof').innerHTML = PERFIS.map(p => `<option value="${p.id}">${p.nome} (${fmt(p.kg, 2)} kg/m)</option>`).join('');
-  syncAddFields();
-  if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
-}
-function closeAdd() { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
-function syncAddFields() {
-  const f = pending?.fmt;
-  $('#f-newcat-wrap').hidden = $('#f-cat').value !== '__nova';
-  $('#f-unit-wrap').hidden = !f || f === 'dae';
-  $('#f-prof-wrap').hidden = f !== 'dxf';
-}
-function addError(msg) { $('#add-err').textContent = msg; $('#add-err').hidden = !msg; }
-async function takeFile(f) {
-  addError('');
-  const ext = (f.name.split('.').pop() || '').toLowerCase();
-  if (!ACCEPT.includes(ext)) { pending = null; syncAddFields(); return addError(`“${f.name}” não é aceito. Envie .dae (SketchUp), .dxf, .obj ou .stl.`); }
-  try {
-    const data = ext === 'stl' ? await f.arrayBuffer() : await f.text();
-    pending = { fmt: ext, fileName: f.name, data };
-    const probe = recordToModel({ id: 'probe', name: '', cat: '', fmt: ext, data, unit: 1 });
-    const s = (probe.user ? new THREE.Box3().setFromObject(probe.object) : bounds(probe.build())).getSize(new THREE.Vector3());
-    const big = Math.max(s.x, s.y, s.z);
-    $('#f-unit').value = big >= 2000 ? '0.001' : big >= 200 ? '0.01' : '1';
-    $('#drop').classList.add('ok');
-    $('#drop-t').textContent = `${f.name} · ${probe.user ? fmt(probe.tris, 0) + ' triângulos' : probe.build().length + ' barras em ' + probe.types.length + ' camadas'}`;
-    if (!$('#f-name').value.trim()) $('#f-name').value = f.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ');
-  } catch (err) {
-    pending = null; $('#drop').classList.remove('ok');
-    $('#drop-t').textContent = 'Arraste o arquivo aqui ou clique para escolher';
-    addError(`Não consegui ler “${f.name}”. ${err.message || ''}`);
-  }
-  syncAddFields();
-}
-$('#add-open').onclick = openAdd;
-$('#add-x').onclick = closeAdd; $('#add-cancel').onclick = closeAdd;
-$('#f-cat').onchange = () => { syncAddFields(); if (!$('#f-newcat-wrap').hidden) $('#f-newcat').focus(); };
-$('#f-file').onchange = e => { const f = e.target.files[0]; if (f) takeFile(f); };
-const drop = $('#drop');
-['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
-['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, () => drop.classList.remove('over')));
-drop.addEventListener('drop', e => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) takeFile(f); });
-$('#add-form').addEventListener('submit', async e => {
-  e.preventDefault();
-  const name = $('#f-name').value.trim();
-  const catV = $('#f-cat').value === '__nova' ? $('#f-newcat').value.trim() : $('#f-cat').value;
-  if (!pending) return addError('Escolha o arquivo da estrutura.');
-  if (!name) { $('#f-name').focus(); return addError('Dê um nome para a estrutura.'); }
-  if (!catV) { $('#f-newcat').focus(); return addError('Escreva o nome da nova categoria.'); }
-  const rec = { id: 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name, cat: catV,
-    desc: $('#f-desc').value.trim() || `Estrutura adicionada a partir de ${pending.fileName}.`, tags: $('#f-tags').value.trim(),
-    fmt: pending.fmt, fileName: pending.fileName, data: pending.data, unit: pending.fmt === 'dae' ? 1 : +$('#f-unit').value, prof: $('#f-prof').value, created: new Date().toISOString() };
-  let md;
-  try { md = recordToModel(rec); } catch (err) { return addError(err.message); }
-  let kept = true;
-  try { await idb.put(rec); } catch { kept = false; }
-  userModels.push(md); addSummary(md); queueThumbs([md.id]);
-  closeAdd();
-  cat = md.cat; query = ''; $('#q').value = '';
-  openModel(md.id);
-  toast(kept ? `“${name}” adicionada em ${md.cat}` : `“${name}” adicionada, mas este navegador não deixou salvar: ela some ao recarregar.`);
-});
-$('#del').onclick = () => { $('#del-row').hidden = true; $('#del-confirm').hidden = false; };
-$('#del-no').onclick = () => { $('#del-row').hidden = false; $('#del-confirm').hidden = true; };
-$('#del-yes').onclick = async () => {
-  const md = cur, i = userModels.indexOf(md);
-  if (i >= 0) userModels.splice(i, 1);
-  saved.delete(md.id); store.set('acervo.saved', [...saved]);
-  delete thumbs[md.id]; delete summary[md.id];
-  try { await idb.del(md.id); } catch {}
-  if (cat !== 'Todos' && !allModels().some(x => x.cat === cat) && !(cat === 'Meus modelos' && userModels.length)) cat = 'Todos';
-  toast(`“${md.name}” excluída`);
-  showLib();
-};
-(async () => {
-  let recs = [];
-  try { recs = await idb.all(); } catch { return; }
-  const ids = [];
-  for (const rec of recs.sort((a, b) => (a.created || '').localeCompare(b.created || ''))) {
-    try { const md = recordToModel(rec); userModels.push(md); addSummary(md); ids.push(md.id); } catch {}
-  }
-  if (ids.length) { renderGrid(); queueThumbs(ids); }
-})();
-
-/* ---------- utilitários ---------- */
-let tt;
-function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 2600); }
-
-function retheme() {
-  readColors();
-  for (const k in thumbs) delete thumbs[k];
-  renderGrid(); queueThumbs(allModels().map(x => x.id));
-  if (cur && !$('#det-view').hidden) { renderLegend(); rebuild(false); }
-}
-matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', retheme);
-new MutationObserver(retheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
-readColors();
-renderGrid();
-queueThumbs(MODELS.map(x => x.id));
-})();
-</script>
-
+<script src="js/modelos.js"></script>
+<script src="js/app.js"></script>
+</body>
 </html>

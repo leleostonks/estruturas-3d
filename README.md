@@ -9,8 +9,15 @@ Biblioteca de estruturas metálicas 3D paramétricas (treliças, coberturas, gal
 
 Site estático de um arquivo (`index.html`). Hospedagem no Render via `render.yaml`.
 
+## Arquivos .skp (SketchUp)
+
+Cada modelo do catálogo tem medidas prontas (variantes), definidas em `js/modelos.js`. Os `.skp` delas são gerados com o próprio SketchUp:
+
+1. `node ferramentas/gerar-json.js` monta as barras de cada variante em `skp/fonte/`.
+2. `pwsh ferramentas/gerar-skp.ps1` abre o SketchUp, roda `ferramentas/gerar-skp.rb` e grava `skp/<modelo>-v<n>.skp` e `skp/index.json`.
+   Também dá para rodar pelo SketchUp: Extensões › Console Ruby › `load 'C:/.../ferramentas/gerar-skp.rb'`.
+3. Commit e push dos arquivos em `skp/`. O site passa a baixar o `.skp` dessas medidas; as demais baixam `.dae`.
+
 ## Publicar no Render
 
-1. Envie esta pasta para um repositório no GitHub.
-2. No Render: **New › Blueprint**, escolha o repositório e confirme. O `render.yaml` já configura um Static Site.
-3. Cada `git push` publica a nova versão automaticamente.
+Static Site ligado a este repositório (`render.yaml`). Cada `git push` na branch `main` publica sozinho.
