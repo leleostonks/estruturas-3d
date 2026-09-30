@@ -2,39 +2,39 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="versao" content="build-20260930-4">
+<meta name="versao" content="build-20260930-5">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="google" content="notranslate">
-<title>Tess Architecture</title>
-<meta name="description" content="Tess Architecture: catálogo de estruturas metálicas 3D para baixar no SketchUp: treliças, coberturas, galpões, torres e pontes.">
+<title>TES Cenografia ecoeficiente</title>
+<meta name="description" content="TES Cenografia ecoeficiente: catálogo de estruturas metálicas 3D para baixar no SketchUp: treliças, coberturas, galpões, torres e pontes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap">
 <style>
 /* Layout: cabeçalho com busca; painel claro com abas; grade de cards empilhados com desenho em traço, variante, favorito e download */
 :root{
-  --bg-a:#fbe9e6; --bg-b:#edf3f6; --panel:rgb(247 250 251 / .92); --panel-line:#ffffff;
-  --surface:#ffffff; --sunk:#eef2f4; --stage:#ffffff; --face:#ffffff; --edge:#1d2327; --grid:#e3e8eb;
-  --ink:#1d2327; --muted:#69757f; --line:#dfe5e9; --shadow:rgb(29 35 39 / .10);
-  --accent:#2f9e57; --accent-ink:#ffffff; --brand:#c63b2f;
-  --m1:#2d5c89; --m2:#c98500; --m3:#62717e; --m4:#34876a; --m5:#a44848; --m6:#6f57a3;
-  --display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
-  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --bg-a:#e3efe2; --bg-b:#f8f7f1; --panel:rgb(240 237 227 / .92); --panel-line:#ffffff;
+  --surface:#ffffff; --sunk:#f0ede3; --stage:#ffffff; --face:#ffffff; --edge:#0c1721; --grid:#e2e2d7;
+  --ink:#0c1721; --muted:#54626f; --line:#d9d8d0; --shadow:rgb(12 23 33 / .10);
+  --accent:#00457b; --accent-ink:#ffffff; --eco:#2c6d3e; --eco-ink:#ffffff; --brand:#00457b;
+  --m1:#00457b; --m2:#2c6d3e; --m3:#54626f; --m4:#c07a1a; --m5:#b14f45; --m6:#6a5a9e;
+  --display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg-a:#1d1716; --bg-b:#11161a; --panel:rgb(23 28 32 / .94); --panel-line:#262e34;
-  --surface:#1c2227; --sunk:#232a30; --stage:#20272c; --face:#dfe4e8; --edge:#0e1215; --grid:#2c353b;
-  --ink:#e6eaed; --muted:#98a4ae; --line:#2c353b; --shadow:rgb(0 0 0 / .35);
-  --accent:#4cc27a; --accent-ink:#0d1a12; --brand:#e5594b;
-  --m1:#6ea2d6; --m2:#f2b632; --m3:#a7b3bc; --m4:#5dbd92; --m5:#e07b7b; --m6:#a88bdb;
+  --bg-a:#08302a; --bg-b:#01172b; --panel:rgb(6 38 63 / .94); --panel-line:#1c354b;
+  --surface:#0b2e4b; --sunk:#123a5a; --stage:#0b2e4b; --face:#dfe6ec; --edge:#01172b; --grid:#1c354b;
+  --ink:#eef2f5; --muted:#96a7b7; --line:#1f3c55; --shadow:rgb(0 0 0 / .35);
+  --accent:#69abe6; --accent-ink:#01172b; --eco:#6fc082; --eco-ink:#01172b; --brand:#69abe6;
+  --m1:#69abe6; --m2:#6fc082; --m3:#96a7b7; --m4:#e0a24a; --m5:#e07b7b; --m6:#a88bdb;
   color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg-a:#1d1716; --bg-b:#11161a; --panel:rgb(23 28 32 / .94); --panel-line:#262e34;
-  --surface:#1c2227; --sunk:#232a30; --stage:#20272c; --face:#dfe4e8; --edge:#0e1215; --grid:#2c353b;
-  --ink:#e6eaed; --muted:#98a4ae; --line:#2c353b; --shadow:rgb(0 0 0 / .35);
-  --accent:#4cc27a; --accent-ink:#0d1a12; --brand:#e5594b;
-  --m1:#6ea2d6; --m2:#f2b632; --m3:#a7b3bc; --m4:#5dbd92; --m5:#e07b7b; --m6:#a88bdb;
+  --bg-a:#08302a; --bg-b:#01172b; --panel:rgb(6 38 63 / .94); --panel-line:#1c354b;
+  --surface:#0b2e4b; --sunk:#123a5a; --stage:#0b2e4b; --face:#dfe6ec; --edge:#01172b; --grid:#1c354b;
+  --ink:#eef2f5; --muted:#96a7b7; --line:#1f3c55; --shadow:rgb(0 0 0 / .35);
+  --accent:#69abe6; --accent-ink:#01172b; --eco:#6fc082; --eco-ink:#01172b; --brand:#69abe6;
+  --m1:#69abe6; --m2:#6fc082; --m3:#96a7b7; --m4:#e0a24a; --m5:#e07b7b; --m6:#a88bdb;
   color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -47,9 +47,12 @@ img{max-width:100%}
 
 /* cabeçalho */
 .top{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:16px 28px;flex-wrap:wrap;padding-block:14px}
-.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;cursor:pointer;text-align:left}
-.brand b{display:block;font:700 26px/1 var(--display);letter-spacing:.06em;color:var(--brand)}
-.brand small{display:block;font:600 10px/1.4 var(--body);letter-spacing:.2em;color:var(--brand);opacity:.85}
+.brand{display:flex;align-items:center;gap:12px;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.brand-tes{font:700 32px/1 var(--body);letter-spacing:.03em;color:var(--brand)}
+.brand-bar{width:1.5px;height:32px;background:var(--muted);opacity:.55}
+.brand-txt{display:flex;flex-direction:column;gap:2px;line-height:1}
+.brand-txt small{font:600 9.5px/1.2 var(--body);letter-spacing:.3em;color:var(--muted)}
+.brand-txt em{font:italic 500 22px/1 var(--display);color:var(--eco)}
 .search{flex:1 1 280px;max-width:520px;display:flex;align-items:center;gap:10px;background:var(--surface);border-radius:999px;padding:0 18px;box-shadow:0 1px 3px var(--shadow)}
 .search input{border:0;background:none;outline:none;padding:11px 0;width:100%;font-size:15px}
 .top-act{margin-left:auto;display:flex;gap:10px}
@@ -66,14 +69,14 @@ img{max-width:100%}
 .tab{display:flex;align-items:center;gap:8px;background:none;border:0;padding:10px 2px 12px;cursor:pointer;color:var(--muted);font-size:15px;position:relative}
 .tab svg{flex:none}
 .tab[aria-selected="true"]{color:var(--ink);font-weight:600}
-.tab[aria-selected="true"]::after{content:"";position:absolute;left:18%;right:18%;bottom:-1px;height:3px;border-radius:3px;background:var(--accent)}
+.tab[aria-selected="true"]::after{content:"";position:absolute;left:18%;right:18%;bottom:-1px;height:3px;border-radius:3px;background:var(--eco)}
 .toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px 22px;margin-bottom:14px;position:relative}
 .toolbar .lbl{font-size:14px;color:var(--muted)}
 .switch{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:3px 3px 3px 12px;cursor:pointer;background:var(--line);color:var(--muted);font-size:13px;font-weight:600;min-width:98px;justify-content:space-between}
 .switch::after{content:"";width:20px;height:20px;border-radius:50%;background:var(--surface);box-shadow:0 1px 2px var(--shadow)}
-.switch[aria-checked="true"]{background:var(--accent);color:var(--accent-ink)}
+.switch[aria-checked="true"]{background:var(--eco);color:var(--eco-ink)}
 .tool{display:inline-flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;font-size:14px;color:var(--ink);padding:4px 2px}
-.tool .n{font:500 11px var(--mono);background:var(--accent);color:var(--accent-ink);border-radius:9px;padding:0 6px}
+.tool .n{font:500 11px var(--mono);background:var(--eco);color:var(--eco-ink);border-radius:9px;padding:0 6px}
 .count{margin-left:auto;font-size:13px;color:var(--muted)}
 .pop{position:absolute;top:calc(100% + 6px);z-index:5;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 28px var(--shadow);padding:10px;min-width:230px;display:flex;flex-direction:column;gap:2px}
 .pop label{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:14px}
@@ -107,8 +110,8 @@ img{max-width:100%}
 .ico.fav[aria-pressed="true"]{color:var(--m5)}
 .ico.fav[aria-pressed="true"] path{fill:currentColor}
 .add-card{align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;min-height:330px;padding:24px;text-align:center;color:var(--muted);font-size:13px;outline:2px dashed var(--line);outline-offset:-10px}
-.add-card:hover{outline-color:var(--accent)}
-.add-card .plus{width:58px;height:58px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:600 34px/1 var(--display)}
+.add-card:hover{outline-color:var(--eco)}
+.add-card .plus{width:58px;height:58px;border-radius:50%;background:var(--eco);color:var(--eco-ink);display:grid;place-items:center;font:500 34px/1 var(--body)}
 .add-card b{font:600 18px/1.2 var(--body);color:var(--ink)}
 .empty{grid-column:1/-1;padding:40px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px}
 .sec-title{grid-column:1/-1;margin:6px 0 -14px;font:600 13px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
@@ -131,8 +134,8 @@ img{max-width:100%}
 .side{display:flex;flex-direction:column;gap:14px;min-width:0}
 .side section{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
 .side h3{font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
-.phead .cat{font-size:12px;color:var(--muted)}
-.phead h2{font:600 24px/1.2 var(--body);margin:4px 0 6px;text-wrap:balance}
+.phead .cat{font:700 11px/1.3 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--eco)}
+.phead h2{font:600 26px/1.2 var(--display);margin:4px 0 6px;text-wrap:balance}
 .phead p{margin:0;color:var(--muted);font-size:14px}
 .dl-row{display:flex;gap:8px;align-items:center;margin-top:12px}
 .dl-row .ico{border:1px solid var(--line);width:46px;height:46px}
@@ -162,7 +165,7 @@ tfoot td{font-weight:600;border-bottom:0}
 /* guia */
 .guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .guide article{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
-.guide h2{font:600 18px/1.3 var(--body);margin:0 0 8px}
+.guide h2{font:600 20px/1.3 var(--display);margin:0 0 8px}
 .guide ol,.guide ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;max-width:65ch}
 .guide kbd{font:12px var(--mono);background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:0 5px}
 
@@ -171,11 +174,11 @@ dialog#add-dlg{border:1px solid var(--line);border-radius:14px;background:var(--
 dialog#add-dlg::backdrop{background:rgb(10 14 18 / .5)}
 #add-form{display:flex;flex-direction:column;gap:14px;padding:20px}
 .dlg-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.dlg-head h2{font:600 22px/1.2 var(--body);margin:0}
+.dlg-head h2{font:600 24px/1.2 var(--display);margin:0}
 .x{border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px}
 .drop{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:24px 16px;border:2px dashed var(--line);border-radius:10px;text-align:center;cursor:pointer;background:var(--sunk)}
 .drop:hover,.drop.over{border-color:var(--accent)}
-.drop.ok{border-style:solid;border-color:var(--accent)}
+.drop.ok{border-style:solid;border-color:var(--eco)}
 .drop:focus-within{outline:2px solid var(--accent);outline-offset:2px}
 .drop input{position:absolute;left:0;top:0;opacity:0;width:1px;height:1px}
 .drop b{overflow-wrap:anywhere}
@@ -208,9 +211,8 @@ dialog#add-dlg::backdrop{background:rgb(10 14 18 / .5)}
 </head>
 <body>
 <header class="top">
-  <button class="brand" id="home" aria-label="Tess Architecture, voltar ao catálogo">
-    <svg width="36" height="36" viewBox="0 0 34 34" aria-hidden="true"><path d="M3 28 L17 5 L31 28 Z M3 28 H31 M10 17 L17 28 L24 17 M17 5 V28" fill="none" stroke="var(--brand)" stroke-width="2.6" stroke-linejoin="round"/><circle cx="17" cy="5" r="2.6" fill="var(--accent)"/></svg>
-    <span><b>TESS</b><small>ARCHITECTURE</small></span>
+  <button class="brand" id="home" aria-label="TES Cenografia ecoeficiente, voltar ao catálogo">
+    <span class="brand-tes">TES</span><span class="brand-bar" aria-hidden="true"></span><span class="brand-txt"><small>CENOGRAFIA</small><em>ecoeficiente</em></span>
   </button>
   <label class="search"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--muted)" stroke-width="1.5"/><path d="M11 11l4 4" stroke="var(--muted)" stroke-width="1.5"/></svg><input id="q" type="search" placeholder="Nome do modelo" aria-label="Buscar pelo nome do modelo" autocomplete="off"></label>
   <div class="top-act"><button class="btn primary" id="add-open" aria-label="Adicionar estrutura">+ <span>Adicionar estrutura</span></button></div>
