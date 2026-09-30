@@ -72,6 +72,37 @@ header.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding-
 .card-dl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:0 14px 12px}
 .card-dl span{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:auto}
 .card-dl button{border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:3px 9px;font:500 12px var(--mono);cursor:pointer}
+.add-card{align-items:center;justify-content:center;gap:8px;border:2px dashed var(--line);background:none;cursor:pointer;min-height:280px;padding:24px;text-align:center;color:var(--muted);font-size:13px}
+.add-card:hover{border-color:var(--accent)}
+.add-card .plus{width:56px;height:56px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:600 32px/1 var(--display)}
+.add-card b{font:600 19px/1.2 var(--display);color:var(--ink)}
+dialog#add-dlg{border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);padding:0;width:min(580px,calc(100vw - 32px));max-height:calc(100dvh - 32px)}
+dialog#add-dlg::backdrop{background:rgb(10 14 18 / .55)}
+#add-form{display:flex;flex-direction:column;gap:14px;padding:20px}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.dlg-head h2{font:700 24px/1.1 var(--display);margin:0}
+.x{border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px}
+.drop{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:24px 16px;border:2px dashed var(--line);border-radius:8px;text-align:center;cursor:pointer;background:var(--bg)}
+.drop:hover,.drop.over{border-color:var(--accent)}
+.drop.ok{border-style:solid;border-color:var(--m4)}
+.drop:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.drop input{position:absolute;left:0;top:0;opacity:0;width:1px;height:1px}
+.drop b{overflow-wrap:anywhere}
+.drop span{font:12px var(--mono);color:var(--muted)}
+.fld{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fld[hidden]{display:none}
+.fld label{font-size:13px;font-weight:500}
+.fld input,.fld select,.fld textarea{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:8px 10px;width:100%}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row2:not(:has(> :not([hidden]))){display:none}
+.help{font-size:12px;color:var(--muted);margin:0}
+.err{color:var(--m5);font-size:13px;font-weight:500;margin:0}
+.dlg-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px}
+.dlg-foot .help{margin-right:auto}
+.btn.danger{color:var(--m5);border-color:var(--m5)}
+.mt{margin-top:12px}
+.note.ask{margin:0;align-self:center}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
 .card-dl button.skp{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
 .card-dl button:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .thumb{aspect-ratio:16/11;max-width:100%;background:var(--stage);display:grid;place-items:center;position:relative}
@@ -156,8 +187,7 @@ tfoot td{font-weight:600;border-bottom:0}
       <span><b>Acervo de Estruturas</b><small>modelos 3D paramétricos</small></span>
     </button>
     <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--muted)" stroke-width="1.6"/><path d="M11 11l4 4" stroke="var(--muted)" stroke-width="1.6"/></svg><input id="q" type="search" placeholder="Buscar treliça, galpão, torre…" aria-label="Buscar modelos"></label>
-    <label class="btn primary" for="up">Enviar modelo (STL/OBJ)</label>
-    <input id="up" type="file" accept=".stl,.obj" hidden multiple>
+    <button class="btn primary" id="add-open">+ Adicionar estrutura</button>
   </header>
 
   <main id="lib-view" class="lib">
@@ -199,8 +229,10 @@ tfoot td{font-weight:600;border-bottom:0}
           <p class="note">Pesos nominais (aço, kg/m de catálogo). Sem ligações, chapas e parafusos. Estimativa para orçamento, não substitui o dimensionamento.</p>
         </section>
         <section id="sec-imp" hidden>
-          <h3>Modelo importado</h3>
+          <h3>Adicionada por você</h3>
           <p class="note" id="imp-info"></p>
+          <div class="exp mt" id="del-row"><button class="btn danger" id="del">Excluir estrutura</button></div>
+          <div class="exp mt" id="del-confirm" hidden><span class="note ask">Excluir de vez deste navegador?</span><button class="btn danger" id="del-yes">Sim, excluir</button><button class="btn" id="del-no">Cancelar</button></div>
         </section>
         <section id="sec-exp">
           <div class="sec-head"><h3>Exportar</h3></div>
@@ -221,10 +253,36 @@ tfoot td{font-weight:600;border-bottom:0}
 </div>
 <div class="toast" id="toast" hidden></div>
 
+<dialog id="add-dlg" aria-labelledby="add-title">
+  <form id="add-form" novalidate>
+    <div class="dlg-head"><h2 id="add-title">Adicionar estrutura</h2><button type="button" class="x" id="add-x" aria-label="Fechar">×</button></div>
+    <label class="drop" id="drop" for="f-file">
+      <input type="file" id="f-file" accept=".dae,.dxf,.obj,.stl">
+      <b id="drop-t">Arraste o arquivo aqui ou clique para escolher</b>
+      <span>SketchUp (.dae) · AutoCAD (.dxf) · OBJ · STL</span>
+    </label>
+    <p class="help">No SketchUp: Arquivo › Exportar › Modelo 3D › COLLADA (.dae). Um DXF com linhas de eixo vira estrutura de barras com lista de materiais; cada camada vira um tipo de barra.</p>
+    <div class="fld"><label for="f-name">Nome *</label><input id="f-name" maxlength="80" placeholder="Ex.: Mezanino 6 × 4 m" autocomplete="off"></div>
+    <div class="row2">
+      <div class="fld"><label for="f-cat">Categoria *</label><select id="f-cat"></select></div>
+      <div class="fld" id="f-newcat-wrap" hidden><label for="f-newcat">Nome da nova categoria</label><input id="f-newcat" maxlength="40" placeholder="Ex.: Mezaninos"></div>
+    </div>
+    <div class="row2">
+      <div class="fld" id="f-unit-wrap" hidden><label for="f-unit">Unidade do desenho</label><select id="f-unit"><option value="1">metros</option><option value="0.01">centímetros</option><option value="0.001">milímetros</option></select></div>
+      <div class="fld" id="f-prof-wrap" hidden><label for="f-prof">Perfil inicial das barras</label><select id="f-prof"></select></div>
+    </div>
+    <div class="fld"><label for="f-desc">Descrição</label><textarea id="f-desc" rows="3" maxlength="400" placeholder="Uso, vão, carga, observações de montagem…"></textarea></div>
+    <div class="fld"><label for="f-tags">Palavras-chave</label><input id="f-tags" maxlength="120" placeholder="Ex.: mezanino, piso, depósito"></div>
+    <p class="err" id="add-err" role="alert" hidden></p>
+    <div class="dlg-foot"><span class="help">Fica salva neste navegador.</span><button type="button" class="btn" id="add-cancel">Cancelar</button><button type="submit" class="btn primary">Adicionar estrutura</button></div>
+  </form>
+</dialog>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/ColladaLoader.js"></script>
 <script>
 (() => {
 const $ = s => document.querySelector(s);
@@ -578,25 +636,27 @@ function filtered() {
   const qq = query.trim().toLowerCase();
   return allModels().filter(md => {
     if (cat === 'Salvos' && !saved.has(md.id)) return false;
-    if (cat !== 'Todos' && cat !== 'Salvos' && md.cat !== cat) return false;
+    if (cat === 'Meus modelos') { if (!md.custom) return false; }
+    else if (cat !== 'Todos' && cat !== 'Salvos' && md.cat !== cat) return false;
     if (qq && !`${md.name} ${md.cat} ${md.tags || ''}`.toLowerCase().includes(qq)) return false;
     return true;
   });
 }
 function renderCats() {
-  const all = allModels(), count = c => c === 'Todos' ? all.length : c === 'Salvos' ? all.filter(x => saved.has(x.id)).length : all.filter(x => x.cat === c).length;
-  const list = ['Todos', ...CATS, ...(userModels.length ? ['Meus modelos'] : [])];
-  $('#cats').innerHTML = '<h4>Categorias</h4>' + list.map(c => `<button class="cat-btn" data-cat="${esc(c)}" aria-pressed="${c === cat}"><span>${esc(c)}</span><span>${count(c)}</span></button>`).join('')
-    + `<hr><button class="cat-btn" data-cat="Salvos" aria-pressed="${cat === 'Salvos'}"><span>★ Salvos</span><span>${count('Salvos')}</span></button>`;
+  const all = allModels(), count = c => c === 'Todos' ? all.length : c === 'Salvos' ? all.filter(x => saved.has(x.id)).length : c === 'Meus modelos' ? userModels.length : all.filter(x => x.cat === c).length;
+  const btn = (c, label = c) => `<button class="cat-btn" data-cat="${esc(c)}" aria-pressed="${c === cat}"><span>${esc(label)}</span><span>${count(c)}</span></button>`;
+  $('#cats').innerHTML = '<h4>Categorias</h4>' + ['Todos', ...allCats()].map(c => btn(c)).join('')
+    + '<hr>' + btn('Salvos', '★ Salvos') + (userModels.length ? btn('Meus modelos', 'Adicionadas por mim') : '');
 }
 function cardMeta(md) {
   if (md.user) return `${md.fmt} · ${fmt(md.tris, 0)} triângulos`;
-  const p = md.params[0], s = summary[md.id];
+  const p = md.params[0], s = summary[md.id] || { bars: 0, kg: 0 };
+  if (!p) return `${md.fmt} · ${s.bars} barras · ${fmt(s.kg, 0)} kg`;
   return `${p.label.toLowerCase()} ${fmt(p.v, p.v % 1 ? 1 : 0)} ${p.u} · ${s.bars} barras · ${fmt(s.kg, 0)} kg`;
 }
 function renderGrid() {
   const list = filtered();
-  $('#lib-title').textContent = cat === 'Todos' ? 'Todos os modelos' : cat;
+  $('#lib-title').textContent = cat === 'Todos' ? 'Todos os modelos' : cat === 'Meus modelos' ? 'Adicionadas por mim' : cat;
   $('#lib-count').textContent = `${list.length} ${list.length === 1 ? 'modelo' : 'modelos'}${query ? ` para “${query}”` : ''}`;
   $('#grid').innerHTML = list.length ? list.map(md => `
     <article class="card" data-id="${md.id}">
@@ -606,12 +666,14 @@ function renderGrid() {
       </button>
       <div class="card-dl"><span>Baixar</span>${(md.user ? ['dae', 'obj'] : ['dae', 'obj', 'dxf', 'csv']).map(k => `<button data-dl="${k}"${k === 'dae' ? ' class="skp"' : ''} aria-label="Baixar ${esc(md.name)} ${k === 'dae' ? 'para SketchUp' : 'em ' + k.toUpperCase()}">${k === 'dae' ? 'SketchUp' : k.toUpperCase()}</button>`).join('')}</div>
     </article>`).join('')
-    : `<div class="empty">${cat === 'Salvos' ? 'Nenhum modelo salvo ainda. Abra um modelo e toque em ★ para guardá-lo aqui.' : 'Nenhum modelo encontrado. Tente outro termo, como “treliça” ou “galpão”.'}</div>`;
+    : `<div class="empty">${cat === 'Salvos' ? 'Nenhum modelo salvo ainda. Abra um modelo e toque em ★ para guardá-lo aqui.' : 'Nenhum modelo encontrado. Tente outro termo, como “treliça” ou “galpão”, ou adicione a sua estrutura.'}</div>`;
+  $('#grid').insertAdjacentHTML('beforeend', `<button class="card add-card" id="add-card"><span class="plus" aria-hidden="true">+</span><b>Adicionar estrutura</b><span>Envie um .dae do SketchUp, um .dxf, .obj ou .stl</span></button>`);
   renderCats();
 }
 $('#cats').addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (!b) return; cat = b.dataset.cat; renderGrid(); });
 $('#q').addEventListener('input', e => { query = e.target.value; if (!$('#det-view').hidden) showLib(); renderGrid(); });
 $('#grid').addEventListener('click', e => {
+  if (e.target.closest('#add-card')) return openAdd();
   const c = e.target.closest('.card'); if (!c) return;
   const dl = e.target.closest('[data-dl]');
   if (!dl) return openModel(c.dataset.id);
@@ -679,11 +741,18 @@ function openModel(id) {
   $('#crumb-cat').textContent = cur.cat;
   $('#d-cat').textContent = cur.cat; $('#d-name').textContent = cur.name; $('#d-desc').textContent = cur.desc;
   $('#fav').setAttribute('aria-pressed', saved.has(id));
-  $('#sec-params').hidden = $('#sec-bom').hidden = !!cur.user;
-  $('#sec-imp').hidden = !cur.user;
+  $('#sec-params').hidden = !!cur.user || !cur.params.length;
+  $('#sec-bom').hidden = !!cur.user;
+  $('#sec-imp').hidden = !cur.custom;
+  $('#del-row').hidden = false; $('#del-confirm').hidden = true;
   $('#exp-out').hidden = true;
   document.querySelectorAll('[data-exp]').forEach(b => b.hidden = cur.user && !['obj', 'dae'].includes(b.dataset.exp));
-  if (cur.user) $('#imp-info').textContent = `${cur.fmt} com ${fmt(cur.tris, 0)} triângulos. Modelos importados não têm parâmetros nem lista de materiais e ficam só nesta sessão do navegador.`;
+  if (cur.custom) {
+    const when = cur.rec?.created ? new Date(cur.rec.created).toLocaleDateString('pt-BR') : 'hoje';
+    $('#imp-info').textContent = cur.user
+      ? `Arquivo ${cur.rec.fileName} (${cur.fmt}, ${fmt(cur.tris, 0)} triângulos), adicionado em ${when}. Para ter lista de materiais e peso, envie a estrutura em DXF com linhas de eixo. Fica salva neste navegador.`
+      : `Arquivo ${cur.rec.fileName} com ${cur.build().length} barras em ${cur.types.length} camadas, adicionado em ${when}. Troque os perfis na lista de materiais. Fica salva neste navegador.`;
+  }
   setViewBtns();
   renderParams(); renderLegend();
   window.scrollTo({ top: 0 });
@@ -856,7 +925,7 @@ let framed = true; try { framed = window.self !== window.top; } catch {}
 const canDownload = !framed;
 const slug = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 function fileName(md, prm, k) {
-  const ps = md.user ? '' : '_' + md.params.filter(p => p.u !== 'liga').slice(0, 3).map(p => `${p.k}${String(prm[p.k]).replace('.', ',')}`).join('_');
+  const ps = md.user || !md.params.length ? '' : '_' + md.params.filter(p => p.u !== 'liga').slice(0, 3).map(p => `${p.k}${String(prm[p.k]).replace('.', ',')}`).join('_');
   return `${slug(md.name)}${ps}.${k}`;
 }
 /* ZIP sem compressão (um arquivo) — o link publicado só permite baixar .zip/.csv, não .obj/.dxf */
@@ -909,32 +978,187 @@ document.querySelectorAll('[data-exp]').forEach(b => {
   b.addEventListener('click', () => exportFile(b.dataset.exp, cur, members, prof, params));
 });
 
-/* ---------- envio de modelos ---------- */
-let upN = 0;
-$('#up').addEventListener('change', async e => {
-  const files = [...e.target.files]; e.target.value = '';
-  const added = [];
-  for (const f of files) {
-    try {
-      const ext = f.name.split('.').pop().toLowerCase(); let object;
-      if (ext === 'stl') {
-        const geo = new THREE.STLLoader().parse(await f.arrayBuffer()); geo.computeVertexNormals();
-        object = new THREE.Mesh(geo);
-      } else if (ext === 'obj') {
-        object = new THREE.OBJLoader().parse(await f.text());
-      } else continue;
-      let tris = 0;
-      object.traverse(o => { if (o.isMesh) { const g = o.geometry; tris += (g.index ? g.index.count : g.attributes.position.count) / 3; } });
-      const md = { id: 'u' + (++upN), name: f.name.replace(/\.[^.]+$/, ''), cat: 'Meus modelos', user: true, object, tris, fmt: ext.toUpperCase(), desc: `Arquivo ${f.name} enviado por você.`, tags: 'importado', types: [] };
-      userModels.push(md); added.push(md.id);
-    } catch (err) { toast(`Não foi possível ler ${f.name}. Envie um STL ou OBJ válido.`); }
+/* ---------- adicionar estrutura ---------- */
+/* Guardado no IndexedDB deste navegador: continua lá ao recarregar, mas não aparece para outras pessoas. */
+const idb = (() => {
+  let p;
+  const open = () => p ||= new Promise((res, rej) => {
+    const r = indexedDB.open('acervo-estruturas', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('estruturas', { keyPath: 'id' });
+    r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+  });
+  const tx = async (mode, fn) => {
+    const db = await open();
+    return new Promise((res, rej) => {
+      const t = db.transaction('estruturas', mode), r = fn(t.objectStore('estruturas'));
+      t.oncomplete = () => res(r?.result); t.onerror = () => rej(t.error); t.onabort = () => rej(t.error);
+    });
+  };
+  return { all: () => tx('readonly', s => s.getAll()), put: rec => tx('readwrite', s => s.put(rec)), del: id => tx('readwrite', s => s.delete(id)) };
+})();
+
+const layerType = l => { l = (l || '').trim(); return !l || l === '0' ? 'barra' : l.replace(/_/g, ' ').toLowerCase(); };
+function parseDXF(text, k) {
+  const L = text.split(/\r?\n/), ents = [];
+  let e = null;
+  for (let i = 0; i + 1 < L.length; i += 2) {
+    const c = parseInt(L[i], 10), v = L[i + 1].trim();
+    if (c === 0) { e = { type: v, g: [] }; ents.push(e); } else if (e) e.g.push([c, v]);
   }
-  if (!added.length) return;
-  queueThumbs(added);
-  cat = 'Meus modelos'; query = ''; $('#q').value = '';
-  if (added.length === 1) openModel(added[0]); else showLib();
-  toast(`${added.length} ${added.length === 1 ? 'modelo adicionado' : 'modelos adicionados'} a Meus modelos`);
+  const raw = [];
+  let sec = '', poly = null;
+  const get = (en, c) => { const f = en.g.find(x => x[0] === c); return f ? f[1] : undefined; };
+  const num = (en, c) => +(get(en, c) || 0);
+  const closePoly = () => {
+    if (!poly) return;
+    const P = poly.pts;
+    for (let i = 0; i + 1 < P.length; i++) raw.push([P[i], P[i + 1], poly.t]);
+    if (poly.closed && P.length > 2) raw.push([P[P.length - 1], P[0], poly.t]);
+    poly = null;
+  };
+  for (const en of ents) {
+    if (en.type === 'SECTION') { sec = get(en, 2) || ''; continue; }
+    if (sec !== 'ENTITIES') continue;
+    if (en.type === 'LINE') raw.push([[num(en, 10), num(en, 20), num(en, 30)], [num(en, 11), num(en, 21), num(en, 31)], layerType(get(en, 8))]);
+    else if (en.type === 'LWPOLYLINE') {
+      const z = num(en, 38), pts = [];
+      for (const [c, v] of en.g) { if (c === 10) pts.push([+v, 0, z]); else if (c === 20 && pts.length) pts[pts.length - 1][1] = +v; }
+      poly = { pts, t: layerType(get(en, 8)), closed: num(en, 70) & 1 }; closePoly();
+    } else if (en.type === 'POLYLINE') { closePoly(); poly = { pts: [], t: layerType(get(en, 8)), closed: num(en, 70) & 1 }; }
+    else if (en.type === 'VERTEX' && poly) poly.pts.push([num(en, 10), num(en, 20), num(en, 30)]);
+    else if (en.type === 'SEQEND') closePoly();
+  }
+  closePoly();
+  /* DXF é Z para cima. Desenho 2D (tudo em Z=0) é tratado como elevação, em pé. */
+  const flat = raw.every(([a, b]) => !a[2] && !b[2]);
+  const conv = p => flat ? [p[0] * k, p[1] * k, 0] : [p[0] * k, p[2] * k, -p[1] * k];
+  const mem = raw.map(([a, b, t]) => m(conv(a), conv(b), t)).filter(x => Math.hypot(x.b[0] - x.a[0], x.b[1] - x.a[1], x.b[2] - x.a[2]) > 1e-6);
+  if (!mem.length) return mem;
+  const bb = bounds(mem), c = bb.getCenter(new THREE.Vector3());
+  const sh = p => [p[0] - c.x, p[1] - bb.min.y, p[2] - c.z];
+  return mem.map(x => m(sh(x.a), sh(x.b), x.t));
+}
+function recordToModel(rec) {
+  const k = +rec.unit || 1, base = { id: rec.id, name: rec.name, cat: rec.cat, desc: rec.desc || '', tags: rec.tags || '', custom: true, fmt: rec.fmt.toUpperCase(), rec, params: [] };
+  if (rec.fmt === 'dxf') {
+    const mem = parseDXF(rec.data, k);
+    if (!mem.length) throw new Error('O DXF não tem linhas (LINE ou POLYLINE) na área de desenho.');
+    const types = [...new Set(mem.map(x => x.t))];
+    return { ...base, types, prof: Object.fromEntries(types.map(t => [t, rec.prof || 'L50'])), build: () => mem };
+  }
+  let object;
+  if (rec.fmt === 'stl') { const geo = new THREE.STLLoader().parse(rec.data); geo.computeVertexNormals(); object = new THREE.Mesh(geo); }
+  else if (rec.fmt === 'obj') object = new THREE.OBJLoader().parse(rec.data);
+  else if (rec.fmt === 'dae') {
+    if (!THREE.ColladaLoader) throw new Error('O leitor de .dae não carregou. Verifique a internet e tente de novo.');
+    object = new THREE.ColladaLoader().parse(rec.data, '').scene;
+  } else throw new Error('Formato não aceito. Use .dae, .dxf, .obj ou .stl.');
+  if (rec.fmt !== 'dae') object.scale.setScalar(k);
+  let tris = 0;
+  object.traverse(o => { if (o.isMesh) { const g = o.geometry; tris += (g.index ? g.index.count : g.attributes.position.count) / 3; } });
+  if (!tris) throw new Error('O arquivo não tem faces 3D para mostrar.');
+  const g = new THREE.Group(); g.add(object); g.updateMatrixWorld(true);
+  const bb = new THREE.Box3().setFromObject(g), c = bb.getCenter(new THREE.Vector3());
+  object.position.sub(new THREE.Vector3(c.x, bb.min.y, c.z));
+  return { ...base, user: true, object: g, tris, types: [] };
+}
+function addSummary(md) {
+  if (md.user) return;
+  const mem = md.build({});
+  summary[md.id] = { bars: mem.length, kg: bom(md, mem, md.prof).reduce((s, r) => s + r.kg, 0) };
+}
+
+const dlg = $('#add-dlg'), ACCEPT = ['dae', 'dxf', 'obj', 'stl'];
+let pending = null;
+function allCats() { return [...new Set([...CATS, ...userModels.map(x => x.cat)])]; }
+function openAdd() {
+  $('#add-form').reset(); pending = null;
+  $('#drop').classList.remove('ok'); $('#drop-t').textContent = 'Arraste o arquivo aqui ou clique para escolher';
+  $('#add-err').hidden = true;
+  const pre = allCats().includes(cat) ? cat : CATS[0];
+  $('#f-cat').innerHTML = allCats().map(c => `<option${c === pre ? ' selected' : ''}>${esc(c)}</option>`).join('') + '<option value="__nova">+ Nova categoria…</option>';
+  $('#f-prof').innerHTML = PERFIS.map(p => `<option value="${p.id}">${p.nome} (${fmt(p.kg, 2)} kg/m)</option>`).join('');
+  syncAddFields();
+  if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+}
+function closeAdd() { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+function syncAddFields() {
+  const f = pending?.fmt;
+  $('#f-newcat-wrap').hidden = $('#f-cat').value !== '__nova';
+  $('#f-unit-wrap').hidden = !f || f === 'dae';
+  $('#f-prof-wrap').hidden = f !== 'dxf';
+}
+function addError(msg) { $('#add-err').textContent = msg; $('#add-err').hidden = !msg; }
+async function takeFile(f) {
+  addError('');
+  const ext = (f.name.split('.').pop() || '').toLowerCase();
+  if (!ACCEPT.includes(ext)) { pending = null; syncAddFields(); return addError(`“${f.name}” não é aceito. Envie .dae (SketchUp), .dxf, .obj ou .stl.`); }
+  try {
+    const data = ext === 'stl' ? await f.arrayBuffer() : await f.text();
+    pending = { fmt: ext, fileName: f.name, data };
+    const probe = recordToModel({ id: 'probe', name: '', cat: '', fmt: ext, data, unit: 1 });
+    const s = (probe.user ? new THREE.Box3().setFromObject(probe.object) : bounds(probe.build())).getSize(new THREE.Vector3());
+    const big = Math.max(s.x, s.y, s.z);
+    $('#f-unit').value = big >= 2000 ? '0.001' : big >= 200 ? '0.01' : '1';
+    $('#drop').classList.add('ok');
+    $('#drop-t').textContent = `${f.name} · ${probe.user ? fmt(probe.tris, 0) + ' triângulos' : probe.build().length + ' barras em ' + probe.types.length + ' camadas'}`;
+    if (!$('#f-name').value.trim()) $('#f-name').value = f.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ');
+  } catch (err) {
+    pending = null; $('#drop').classList.remove('ok');
+    $('#drop-t').textContent = 'Arraste o arquivo aqui ou clique para escolher';
+    addError(`Não consegui ler “${f.name}”. ${err.message || ''}`);
+  }
+  syncAddFields();
+}
+$('#add-open').onclick = openAdd;
+$('#add-x').onclick = closeAdd; $('#add-cancel').onclick = closeAdd;
+$('#f-cat').onchange = () => { syncAddFields(); if (!$('#f-newcat-wrap').hidden) $('#f-newcat').focus(); };
+$('#f-file').onchange = e => { const f = e.target.files[0]; if (f) takeFile(f); };
+const drop = $('#drop');
+['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, () => drop.classList.remove('over')));
+drop.addEventListener('drop', e => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) takeFile(f); });
+$('#add-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = $('#f-name').value.trim();
+  const catV = $('#f-cat').value === '__nova' ? $('#f-newcat').value.trim() : $('#f-cat').value;
+  if (!pending) return addError('Escolha o arquivo da estrutura.');
+  if (!name) { $('#f-name').focus(); return addError('Dê um nome para a estrutura.'); }
+  if (!catV) { $('#f-newcat').focus(); return addError('Escreva o nome da nova categoria.'); }
+  const rec = { id: 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name, cat: catV,
+    desc: $('#f-desc').value.trim() || `Estrutura adicionada a partir de ${pending.fileName}.`, tags: $('#f-tags').value.trim(),
+    fmt: pending.fmt, fileName: pending.fileName, data: pending.data, unit: pending.fmt === 'dae' ? 1 : +$('#f-unit').value, prof: $('#f-prof').value, created: new Date().toISOString() };
+  let md;
+  try { md = recordToModel(rec); } catch (err) { return addError(err.message); }
+  let kept = true;
+  try { await idb.put(rec); } catch { kept = false; }
+  userModels.push(md); addSummary(md); queueThumbs([md.id]);
+  closeAdd();
+  cat = md.cat; query = ''; $('#q').value = '';
+  openModel(md.id);
+  toast(kept ? `“${name}” adicionada em ${md.cat}` : `“${name}” adicionada, mas este navegador não deixou salvar: ela some ao recarregar.`);
 });
+$('#del').onclick = () => { $('#del-row').hidden = true; $('#del-confirm').hidden = false; };
+$('#del-no').onclick = () => { $('#del-row').hidden = false; $('#del-confirm').hidden = true; };
+$('#del-yes').onclick = async () => {
+  const md = cur, i = userModels.indexOf(md);
+  if (i >= 0) userModels.splice(i, 1);
+  saved.delete(md.id); store.set('acervo.saved', [...saved]);
+  delete thumbs[md.id]; delete summary[md.id];
+  try { await idb.del(md.id); } catch {}
+  if (cat !== 'Todos' && !allModels().some(x => x.cat === cat) && !(cat === 'Meus modelos' && userModels.length)) cat = 'Todos';
+  toast(`“${md.name}” excluída`);
+  showLib();
+};
+(async () => {
+  let recs = [];
+  try { recs = await idb.all(); } catch { return; }
+  const ids = [];
+  for (const rec of recs.sort((a, b) => (a.created || '').localeCompare(b.created || ''))) {
+    try { const md = recordToModel(rec); userModels.push(md); addSummary(md); ids.push(md.id); } catch {}
+  }
+  if (ids.length) { renderGrid(); queueThumbs(ids); }
+})();
 
 /* ---------- utilitários ---------- */
 let tt;
